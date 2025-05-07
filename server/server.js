@@ -19,41 +19,66 @@ let clientId;
 app.ws("/ws", (ws, req) => {
     console.log("ws connection has been established")
     clientId = req.user.userId
-    clients.set(clientId, ws);
 
-    ws.on("message", async (message) => {
+    clients.set(clientId, { ws, groups: [] });
+
+    ws.on("message", async (msg) => {
+        const message=JSON.parse(msg)
+        if (!message.group) {
+            console.log("message comming from front end <form>:", message)
+            //await addMessage(message);
+            const user = req.user.userId
+            const receiverId = message.to;
+            const receiver = clients.get(receiverId)
+            const payload = {
+                message: message,
+                form: user,
+                to:receiverId,
+                group:null,
 
 
-        console.log("message comming from front end <form>:", message)
-        //await addMessage(message);
-        const user = clientId
-        const receiverId = message.to;
-        const receiver = clients.get(receiverId)
-        const payload = {
-            message: message,
-            form: user,
-            to: receiver,
+            }
 
 
+
+            receiver.ws.send(JSON.stringify(payload))
         }
-        
+        else{
+            
+            clients.forEach((metadata,id)=>{
+                if(metadata.groups.includes(message.group)){
+                    const payload={
+                        message:message,
+                        form: req.user.userId,
+                        reciever:id,
+                        group: parsedMessage.group,
+
+                    }
+                    metadata.ws.send(JSON.stringify(payload));
+                }
+            })
+        }
 
 
-        ws.send(JSON.stringify(payload))
 
 
-        
+
+
+
 
 
 
     })
 
-    ws.on("close",()=>{
-        console.log("close",clientId);
+    ws.on("close", () => {
+        console.log("close", clientId);
         clients.clear(clientId);
 
     })
-    
+    ws.on('error', (err) => {
+        console.log('WebSocket error:', err);
+    });
+
 
 
 
