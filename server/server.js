@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const expressWs = require('express-ws');
@@ -12,18 +12,22 @@ app.get('*', (req, res) => {
 });
 
 
-//......................................WebSocket routes..............................................
+
+
+//......................................WebSocket .............................................
 
 const clients = new Map();
-let clientId;
+
 app.ws("/ws", (ws, req) => {
+    
     console.log("ws connection has been established")
-    clientId = req.user.userId
+   let clientId = req.user.userId
 
     clients.set(clientId, { ws, groups: [] });
 
     ws.on("message", async (msg) => {
         const message=JSON.parse(msg)
+
         if (!message.group) {
             console.log("message comming from front end <form>:", message)
             //await addMessage(message);
@@ -40,9 +44,31 @@ app.ws("/ws", (ws, req) => {
             }
 
 
+            if (message.type === "fetch") {
+                const from = req.user.userId;
+                const messages = await getAllMessagesForSender(from);
+                ws.send(JSON.stringify({
+                  type: "fetched_messages",
+                  messages
+                }));
+              }
+
+
 
             receiver.ws.send(JSON.stringify(payload))
         }
+
+
+        if (message.type === "joinGroup") {
+            const client = clients.get(clientId);
+            if (client && !client.groups.includes(message.groupId)) {
+                client.groups.push(message.groupId);
+            }
+            return;
+        }
+
+
+
         else{
             
             clients.forEach((metadata,id)=>{
@@ -51,7 +77,7 @@ app.ws("/ws", (ws, req) => {
                         message:message,
                         form: req.user.userId,
                         reciever:id,
-                        group: parsedMessage.group,
+                        group: message.group,
 
                     }
                     metadata.ws.send(JSON.stringify(payload));
@@ -72,7 +98,7 @@ app.ws("/ws", (ws, req) => {
 
     ws.on("close", () => {
         console.log("close", clientId);
-        clients.clear(clientId);
+        clients.delete(clientId);
 
     })
     ws.on('error', (err) => {
@@ -86,3 +112,6 @@ app.ws("/ws", (ws, req) => {
 
 
 })
+
+
+
