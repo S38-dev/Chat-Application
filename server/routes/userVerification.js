@@ -1,105 +1,78 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
+const multer = require('multer');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
+const { getUser, addUser } = require('../db.js');
 
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const saltRounds = 10; 
+const upload = multer({ dest: 'uploads/' });
 
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
-var session = require('express-session')
-
-
-//...........................................custom passport authenticate middleware........................................................
-
-router.post('/login/submit', (req, res, next) => {
-    passport.authenticate("local", (err, user, info) => {
-      if (err) return res.status(500).json({ message: "Internal server error" });
-      if (!user) return res.status(401).json({ message: "Invalid credentials" });
-  
-      req.login(user, (err) => {
-        if (err) return res.status(500).json({ message: "Login failed" });
-        return res.json({ message: "Login successful", user });
-      });
-    })(req, res, next); 
-  });
-
-
-
-
-passport.use(new LocalStrategy(async function verify(username, password, cb) {
-    console.log("username : ",username);
+// Configure LocalStrategy for Passport
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
     try {
-      const user_result = await getPassword(username);
-     
-      console.log("hashreasult ", user_result)
-      if  (user_result.length === 0) {
-        return cb(null, false);
-      }
-      const isMatch = await bcrypt.compare(password, user_result[0].password);
-  
-      
-      if (!isMatch) {
-        return cb(null, false);
-      }
-  
-      const profilePhoto=await getUserProfilePic(username);
-  
-  
-  
-      console.log("user id in db <passport> ",user_result[0].id)
-      return cb(null, { username:username ,profilephoto:profilePhoto ,user_id:user_result[0].id});
+      const users = await getUser(username);
+      if (!users.length) return done(null, false);
+
+      const user = users[0];
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) return done(null, false);
+
+      return done(null, {
+        id: user.id,
+        username: user.userName,
+        profilePic: user.profile_pic,
+      });
     } catch (err) {
-      return cb(err);
+      return done(err);
     }
-  }));
-
-
-  
-router.post("/register/action", upload.single('uploaded_file'),async (req,res)=>{
-    let username = req.body.username
-    console.log("getting the user fpor register",username)
-   let response= await db.query("SELECT * FROM USERS WHERE gmail=$1",[username])
-   if (response.rows.length!=0){
-    return res.status(409).send("User already exists. Please log in.");
- }
- 
- 
- 
-  else {
-   const hashedPassword = await bcrypt.hash(req.body.password, 10);
-     const newUser= await addUser({
-     name:req.body.name,
-     gmail: username,
-     password: hashedPassword,
-   
-      profile_pic: req.file ? req.file.filename : null,
-       age:req.body.age
-   });
-   
-   res.json({navigate:'/login'})
- 
- }
- 
- })
-
-
-
-
-
-passport.serializeUser(function(user,cb){
-    console.log("the value within serialize user  ",user)
-     cb(null,user)
-   
-   })
-   
-   
- passport.deserializeUser(function(user,cb){
-    cb(null,user)
-    
-  
   })
+);
 
+// Serialize and deserialize user to session
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
+passport.deserializeUser(async (id, done) => {
+  try {
+    const users = await getUserById(id);
+    if (!users.length) return done(null, false);
+    const user = users[0];
+    done(null, { id: user.id, username: user.userName, profilePic: user.profile_pic });
+  } catch (err) {
+    done(err);
+  }
+});
 
-  module.exports= router;
+// Login route
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user) => {
+    if (err) return res.status(500).json({ message: 'Server error' });
+    if (!user) return res.status(401).json({ message: 'Invalid credentials' });
+
+    req.login(user, err => {
+      if (err) return res.status(500).json({ message: 'Login failed' });
+      res.json({ message: 'Login successful', user });
+    });
+  })(req, res, next);
+});
+
+// Registration route
+router.post('/register', upload.single('profile_pic'), async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const existing = await getUser(username);
+    if (existing.length) return res.status(409).json({ message: 'User exists' });
+
+    const hash = await bcrypt.hash(password, 10);
+    const user = await addUser({ username, password: hash, profile_pic: req.file?.filename });
+    res.status(201).json({ message: 'Registration successful', user });
+  } catch (err) {
+    res.status(500).json({ message: 'Registration error', error: err.message });
+  }
+});
+
+module.exports = router;
