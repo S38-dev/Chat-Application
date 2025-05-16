@@ -3,6 +3,10 @@ const session = require('express-session');
 const passport = require('passport');
 const expressWs = require('express-ws');
 const path = require('path');
+const cors=require('cors')
+const corsOptions={
+  origin:['http://localhost:3000']
+}
 
 var LocalStrategy = require('passport-local');
 
@@ -22,10 +26,11 @@ const app = express();
 expressWs(app);
 
 // Middleware
+app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
-  express.static(path.join(__dirname, 'client/dist'))
+  express.static(path.join(__dirname, '../client/dist'))
 );
 
 app.use(
@@ -47,7 +52,7 @@ app.use('/authentication', authentication);
 // Serve React app
 app.get('/', (req, res) => {
  
-     res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+     res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
   
 });
 
@@ -72,7 +77,7 @@ app.ws('/ws', (ws, req) => {
     }
   })();
 
-  ws.on('message', async msg => {
+  ws.on('message', async (msg) => {
     try {
       const message = JSON.parse(msg);
 

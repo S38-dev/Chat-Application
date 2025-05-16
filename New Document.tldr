@@ -24,26 +24,155 @@
 			"com.tldraw.shape.note": 9,
 			"com.tldraw.shape.line": 5,
 			"com.tldraw.shape.frame": 1,
-			"com.tldraw.shape.arrow": 5,
+			"com.tldraw.shape.arrow": 6,
 			"com.tldraw.shape.highlight": 1,
 			"com.tldraw.shape.embed": 4,
 			"com.tldraw.shape.image": 5,
 			"com.tldraw.shape.video": 3,
-			"com.tldraw.binding.arrow": 0
+			"com.tldraw.binding.arrow": 1
 		}
 	},
 	"records": [
 		{
+			"x": 971.1093150417466,
+			"y": -306.7415539032434,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:LOIKCkIgJu2RjhTk134Xj",
+			"type": "arrow",
+			"props": {
+				"dash": "draw",
+				"size": "m",
+				"fill": "none",
+				"color": "black",
+				"labelColor": "black",
+				"bend": 0,
+				"start": {
+					"x": 0,
+					"y": 0
+				},
+				"end": {
+					"x": 312.3790232378517,
+					"y": 144.8461392667133
+				},
+				"arrowheadStart": "none",
+				"arrowheadEnd": "arrow",
+				"text": "",
+				"labelPosition": 0.5,
+				"font": "draw",
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
+			},
+			"parentId": "page:page",
+			"index": "b018oD",
+			"typeName": "shape"
+		},
+		{
 			"id": "pointer:pointer",
 			"typeName": "pointer",
-			"x": 3696.4480352858627,
-			"y": 7511.775620628024,
-			"lastActivityTimestamp": 1746717170932,
+			"x": 1945.8415222859826,
+			"y": 12001.317176609049,
+			"lastActivityTimestamp": 1746859251564,
 			"meta": {}
 		},
 		{
-			"x": 687,
-			"y": 340.796875,
+			"meta": {},
+			"id": "binding:I7YGAo6A-IbhdWqrmhPLx",
+			"type": "arrow",
+			"fromId": "shape:2BktkRJqcqc-BgpgV7Hql",
+			"toId": "shape:T9Qwqns-ybAKP4dIDYwix",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.48712409047548483,
+					"y": 0.152603901496243
+				},
+				"terminal": "end",
+				"snap": "none"
+			},
+			"typeName": "binding"
+		},
+		{
+			"x": 1938.3390491924483,
+			"y": 8423.431179023635,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:_ZSosH-76ve780_mkm6d9",
+			"type": "geo",
+			"props": {
+				"w": 460.4943093903212,
+				"h": 392.35994728665173,
+				"geo": "rectangle",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "l",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b07BMh",
+			"typeName": "shape"
+		},
+		{
+			"x": 609.8665339789799,
+			"y": -453.33282737798936,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:1KS40FtCeVK-WHSWiM_lT",
+			"type": "geo",
+			"props": {
+				"w": 399.6357336394859,
+				"h": 141.35587085064788,
+				"geo": "rectangle",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "az8Qw",
+			"typeName": "shape"
+		},
+		{
+			"x": 600.0170433963083,
+			"y": 473.3423326818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -81,8 +210,47 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 782,
-			"y": 101.796875,
+			"x": 2224.9732621803014,
+			"y": 8561.247096615127,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:WGlAxzi1h28ONQnsXZ2S6",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "l",
+				"w": 108.46875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "group"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b089jP",
+			"typeName": "shape"
+		},
+		{
+			"x": 695.0170433963083,
+			"y": 234.34233268181742,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -120,8 +288,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 506,
-			"y": 126,
+			"x": 419.0170433963083,
+			"y": 258.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -157,8 +325,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 498.2207794428002,
-			"y": 459.8104496208822,
+			"x": 411.2378228391085,
+			"y": 592.3559073026996,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -196,8 +364,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1554.392216614327,
-			"y": 502.8695729309046,
+			"x": 1467.4092600106353,
+			"y": 635.415030612722,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -235,8 +403,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1729.3852313572806,
-			"y": 629.2058827897943,
+			"x": 1642.402274753589,
+			"y": 761.7513404716117,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -274,8 +442,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1329.1114956179129,
-			"y": 49.9570025785726,
+			"x": 1242.1285390142211,
+			"y": 182.50246026039002,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -311,8 +479,147 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 666.5311476573899,
-			"y": 1636.8671527478073,
+			"x": 493.27782645927823,
+			"y": 8352.433805731085,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:qKjRIK7I-3CUBBLnBjw8U",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "l",
+				"w": 748.203125,
+				"font": "draw",
+				"textAlign": "middle",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": " clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(clientId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " { ws"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " [] })"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0428w",
+			"typeName": "shape"
+		},
+		{
+			"x": 2044.064783491246,
+			"y": 8565.946018139517,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:j3MNyj_8m9qKCB9h42DPo",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "l",
+				"w": 35.75,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "id"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0B5Fw",
+			"typeName": "shape"
+		},
+		{
+			"x": 579.5481910536981,
+			"y": 1769.4126104296247,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -350,8 +657,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 262,
-			"y": 301.9099279095068,
+			"x": 175.01704339630828,
+			"y": 434.4553855913242,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -401,13 +708,14 @@
 					"x": 0.556591765628538,
 					"y": 0.8329689454702782
 				},
-				"terminal": "start"
+				"terminal": "start",
+				"snap": "none"
 			},
 			"typeName": "binding"
 		},
 		{
-			"x": 850,
-			"y": 191,
+			"x": 763.0170433963083,
+			"y": 323.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -434,23 +742,25 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "a4jkR",
 			"typeName": "shape"
 		},
 		{
-			"x": -411.82616626673644,
-			"y": -6047.1154409019855,
-			"z": 0.3912170262641935,
+			"x": -203.53373713796714,
+			"y": -10945.84729079583,
+			"z": 0.5750993071036966,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
 		},
 		{
-			"x": 1345.8008356845578,
-			"y": 506.52966297321836,
+			"x": 1258.817879080866,
+			"y": 639.0751206550358,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -486,8 +796,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 521,
-			"y": 127.8515625,
+			"x": 434.0170433963083,
+			"y": 260.3970201818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -525,8 +835,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1600.5025495993266,
-			"y": 539.7980698700261,
+			"x": 1513.5195929956349,
+			"y": 672.3435275518435,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -620,8 +930,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 496.0590227992966,
-			"y": 2262.9778692779746,
+			"x": 30.944404924788387,
+			"y": 2381.8969607878707,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -671,7 +981,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "from      |  to   |timestamp | userID<foreginer key connects to the sendr >|"
+									"text": "from      |  to   |group|timestamp | userID<foreginer key connects to the sendr >|"
 								}
 							]
 						},
@@ -2076,8 +2386,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1448.32106752252,
-			"y": 65.9404619928165,
+			"x": 1361.3381109188283,
+			"y": 198.48591967463392,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2115,8 +2425,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1734.6640212615073,
-			"y": 792.8953088230882,
+			"x": 1647.6810646578156,
+			"y": 925.4407665049056,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2154,8 +2464,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 709.8108898717201,
-			"y": 377.66984020081145,
+			"x": 622.8279332680283,
+			"y": 510.2152978826289,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2193,8 +2503,528 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 709.8108898717201,
-			"y": 395.01803087591486,
+			"x": 403.69299322754705,
+			"y": 8481.371474999418,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:j4HmHCRcXNYWIiICmbSua",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "l",
+				"w": 477.328125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "  "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "else"
+								},
+								{
+									"type": "text",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "forEach(("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "metadata,id"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=>"
+								},
+								{
+									"type": "text",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": "(metadata"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "includes(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "group"
+								},
+								{
+									"type": "text",
+									"text": ")){"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                    const payload"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                        message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                        form"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                        reciever"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": "id"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                        group"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "group"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "hardBreak"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                    }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                    metadata"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "ws"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "send(JSON"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "stringify(payload))"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            })"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b059Y4",
+			"typeName": "shape"
+		},
+		{
+			"x": 622.8279332680283,
+			"y": 527.5634885577323,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2240,13 +3070,14 @@
 					"x": 0.55859375,
 					"y": 0.03508771929824561
 				},
-				"terminal": "end"
+				"terminal": "end",
+				"snap": "none"
 			},
 			"typeName": "binding"
 		},
 		{
-			"x": 396,
-			"y": 129,
+			"x": 309.0170433963083,
+			"y": 261.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2285,8 +3116,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1469.7787904653494,
-			"y": 179.89543595459446,
+			"x": 1382.7958338616577,
+			"y": 312.4408936364119,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2313,15 +3144,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aY6vp",
 			"typeName": "shape"
 		},
 		{
-			"x": 740,
-			"y": 56,
+			"x": 653.0170433963083,
+			"y": 188.54545768181742,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2357,8 +3190,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 902,
-			"y": 338.796875,
+			"x": 815.0170433963083,
+			"y": 471.3423326818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2387,12 +3220,56 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:6S-eAagT-pHMKSZdYbgh1",
+			"x": 581.7179312071853,
+			"y": 9572.42742241367,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:AjaE3utekICEqE7xCaJi5",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "l",
+				"w": 2787.40625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "code"
+										}
+									],
+									"text": "[   { message: \"Hello!\", to: 2, timestamp: ..., group: null },   { message: \"Hey group!\", to: null, group: 3, timestamp: ... } ] "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0C1wN",
+			"typeName": "shape"
+		},
+		{
+			"editingShapeId": "shape:LS2K2Z8VT_WYZaAH_9CLx",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:6S-eAagT-pHMKSZdYbgh1"
+				"shape:LS2K2Z8VT_WYZaAH_9CLx"
 			],
-			"hoveredShapeId": "shape:6S-eAagT-pHMKSZdYbgh1",
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -2402,8 +3279,8 @@
 			"typeName": "instance_page_state"
 		},
 		{
-			"x": 521,
-			"y": 172,
+			"x": 434.0170433963083,
+			"y": 304.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2430,15 +3307,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aEcyW",
 			"typeName": "shape"
 		},
 		{
-			"x": 855.849495156622,
-			"y": -131.2415467164305,
+			"x": 768.8665385529303,
+			"y": 1.3039109653869332,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2465,15 +3344,718 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "a1aR6",
 			"typeName": "shape"
 		},
 		{
-			"x": 1589.419524630674,
-			"y": 542.5688261121893,
+			"x": 1845.957903421454,
+			"y": 10022.439814138492,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:gKXAUNaNuYHZ0TOlXxyB8",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 928.625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "const clients "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "new"
+								},
+								{
+									"type": "text",
+									"text": " Map()"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "const groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=new"
+								},
+								{
+									"type": "text",
+									"text": " Map()"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "//freinds:<set of friends>"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://app.ws",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "app"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://app.ws",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://app.ws",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "ws"
+								},
+								{
+									"type": "text",
+									"text": "(\"/ws\""
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "ws,"
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "req"
+								},
+								{
+									"type": "text",
+									"text": ") "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=>"
+								},
+								{
+									"type": "text",
+									"text": " {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "    "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "    console"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "log(\"ws connection has been established\")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   let allClients "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": " fetchAllUsers()"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "//fetch all users "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   let allGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": "fetchGroups(req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "//gives all user joined groups"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": " allClients "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "forEach(("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "client"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=>"
+								},
+								{
+									"type": "text",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " { ws"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " [] })"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": "(client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "==="
+								},
+								{
+									"type": "text",
+									"text": "req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": "){"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " { ws"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " allGroups })"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": " })"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0E8rh",
+			"typeName": "shape"
+		},
+		{
+			"x": 1502.4365680269823,
+			"y": 675.1142837940067,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2822,8 +4404,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1477.2701122160618,
-			"y": 1795.8235661311805,
+			"x": 1390.28715561237,
+			"y": 1928.369023812998,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2915,8 +4497,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 684.1877116139875,
-			"y": -146.73879106402944,
+			"x": 597.2047550102958,
+			"y": -14.193333382212018,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2943,15 +4525,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aR9D0",
 			"typeName": "shape"
 		},
 		{
-			"x": 1391.1004730083087,
-			"y": 116.23596250229082,
+			"x": 1304.117516404617,
+			"y": 248.78142018410824,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2989,6 +4573,787 @@
 			"typeName": "shape"
 		},
 		{
+			"x": 992.9626138417584,
+			"y": 12463.845989831967,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:nk_ICoVS1xDFnLepEQ576",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 928.625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "const clients "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "new"
+								},
+								{
+									"type": "text",
+									"text": " Map()"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "const groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=new"
+								},
+								{
+									"type": "text",
+									"text": " Map()"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "//freinds:<set of friends>"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://app.ws",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "app"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://app.ws",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://app.ws",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "ws"
+								},
+								{
+									"type": "text",
+									"text": "(\"/ws\""
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "ws,"
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "req"
+								},
+								{
+									"type": "text",
+									"text": ") "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=>"
+								},
+								{
+									"type": "text",
+									"text": " {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "    "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "    console"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "log(\"ws connection has been established\")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   let allClients "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": " fetchAllUsers()"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "//fetch all users "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   let allGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": "fetchGroups(req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "//gives all user joined groups"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": " allClients "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "forEach(("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "client"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "=>"
+								},
+								{
+									"type": "text",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " { ws"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " [] })"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": "(client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "==="
+								},
+								{
+									"type": "text",
+									"text": "req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": "){"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " { ws"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ":"
+								},
+								{
+									"type": "text",
+									"text": " allGroups })"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "      }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": " })"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "   "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0J35N",
+			"typeName": "shape"
+		},
+		{
+			"x": 777.3994179501182,
+			"y": -310.2318223193088,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:2BktkRJqcqc-BgpgV7Hql",
+			"type": "arrow",
+			"props": {
+				"dash": "draw",
+				"size": "m",
+				"fill": "none",
+				"color": "black",
+				"labelColor": "black",
+				"bend": 0,
+				"start": {
+					"x": 0,
+					"y": 0
+				},
+				"end": {
+					"x": -13.961073664261562,
+					"y": 214.65150758802088
+				},
+				"arrowheadStart": "none",
+				"arrowheadEnd": "arrow",
+				"text": "",
+				"labelPosition": 0.5,
+				"font": "draw",
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
+			},
+			"parentId": "page:page",
+			"index": "aUDAl",
+			"typeName": "shape"
+		},
+		{
+			"x": 1211.937835750258,
+			"y": -154.91487780439934,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:J9S5EmHzJzlA6E4Lq1TWa",
+			"type": "geo",
+			"props": {
+				"w": 389.1649283912898,
+				"h": 157.06207872294215,
+				"geo": "rectangle",
+				"color": "black",
+				"labelColor": "black",
+				"fill": "none",
+				"dash": "draw",
+				"size": "m",
+				"font": "draw",
+				"align": "middle",
+				"verticalAlign": "middle",
+				"growY": 0,
+				"url": "",
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph"
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b02B9T",
+			"typeName": "shape"
+		},
+		{
 			"meta": {},
 			"id": "binding:n015eRuhSv2phsb8OgMC9",
 			"type": "arrow",
@@ -3001,13 +5366,92 @@
 					"x": 0.7214285714285714,
 					"y": 0.32584269662921345
 				},
-				"terminal": "end"
+				"terminal": "end",
+				"snap": "none"
 			},
 			"typeName": "binding"
 		},
 		{
-			"x": 776.0970998074656,
-			"y": 373.0968132937759,
+			"x": 761.6932100778239,
+			"y": -413.6916577209432,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:MSHOt-cx2Eiu5PKvjsc5C",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 45.578125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "app"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b002Up",
+			"typeName": "shape"
+		},
+		{
+			"x": 1236.0510653025294,
+			"y": 12161.77919229869,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:Yk7SIEMV5VfoUnaENbZWs",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 542.921875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "this part handels the ading to group hmm, "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0H7YC",
+			"typeName": "shape"
+		},
+		{
+			"x": 689.1141432037739,
+			"y": 505.6422709755933,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3051,8 +5495,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 435.3446700333226,
-			"y": 489.4071722571057,
+			"x": 348.36171342963087,
+			"y": 621.9526299389231,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3090,8 +5534,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1416.134483108276,
-			"y": 66.64634264521754,
+			"x": 1329.1515265045844,
+			"y": 199.19180032703497,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3127,8 +5571,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1577.679498867916,
-			"y": 187.6103974154272,
+			"x": 1490.6965422642243,
+			"y": 320.1558550972446,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3155,15 +5599,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "ajCF0",
 			"typeName": "shape"
 		},
 		{
-			"x": 351,
-			"y": 67,
+			"x": 264.0170433963083,
+			"y": 199.54545768181742,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3199,8 +5645,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 317.7949971290401,
-			"y": -172.4467070045748,
+			"x": 230.81204052534838,
+			"y": -39.901249322757366,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3238,8 +5684,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 898,
-			"y": 194,
+			"x": 811.0170433963083,
+			"y": 326.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3266,10 +5712,51 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aD5SF",
+			"typeName": "shape"
+		},
+		{
+			"x": 2257.8657128510386,
+			"y": 8655.225527102948,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:DVyY84xylIMvdPepMfv93",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "l",
+				"w": 53.640625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "ws"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b099vK",
 			"typeName": "shape"
 		},
 		{
@@ -3285,13 +5772,14 @@
 					"x": 0.7189246276504019,
 					"y": 0.07162308277402646
 				},
-				"terminal": "end"
+				"terminal": "end",
+				"snap": "none"
 			},
 			"typeName": "binding"
 		},
 		{
-			"x": 496.17832321430933,
-			"y": 6488.033492097689,
+			"x": 540.2290469372485,
+			"y": 6553.536133901146,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -3782,7 +6270,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "would this approach work .. now i am sending the message to real to but it is bad approach it makes the send slow and ineffiecint "
+									"text": "would this approach work .. now i am sending the message to real to but it is bad approach it makes the code  slow and ineffiecint "
 								}
 							]
 						},
@@ -3861,8 +6349,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 251.42904741505578,
-			"y": 640.8030690884244,
+			"x": 164.44609081136406,
+			"y": 773.3485267702418,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4095,8 +6583,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 560,
-			"y": 180,
+			"x": 473.0170433963083,
+			"y": 312.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4123,15 +6611,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aGjke",
 			"typeName": "shape"
 		},
 		{
-			"x": 698.1114452277374,
-			"y": 379.4187713506045,
+			"x": 611.1284886240456,
+			"y": 511.96422903242194,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4179,48 +6669,10 @@
 					"x": 0.28695652173913044,
 					"y": 0.9905660377358491
 				},
-				"terminal": "start"
+				"terminal": "start",
+				"snap": "none"
 			},
 			"typeName": "binding"
-		},
-		{
-			"x": 810.5498578328712,
-			"y": -202.99477016873414,
-			"rotation": 0,
-			"isLocked": false,
-			"opacity": 1,
-			"meta": {},
-			"id": "shape:G3qqjBjcBNg-8Kfa3PTwj",
-			"type": "text",
-			"props": {
-				"color": "light-green",
-				"size": "s",
-				"w": 34.4375,
-				"font": "draw",
-				"textAlign": "start",
-				"autoSize": true,
-				"scale": 1.9437876443985318,
-				"richText": {
-					"type": "doc",
-					"content": [
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "app"
-								}
-							]
-						}
-					]
-				}
-			},
-			"parentId": "page:page",
-			"index": "aU3aZ",
-			"typeName": "shape"
 		},
 		{
 			"meta": {},
@@ -4235,13 +6687,53 @@
 					"x": 0.14236843548391803,
 					"y": 0.14983804218886645
 				},
-				"terminal": "end"
+				"terminal": "end",
+				"snap": "none"
 			},
 			"typeName": "binding"
 		},
 		{
-			"x": 817,
-			"y": 139.796875,
+			"x": 1362.0193776410695,
+			"y": -99.56750027505905,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:tXfkQfgloS0lAniUrIvny",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 61.578125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "login"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b035cJ",
+			"typeName": "shape"
+		},
+		{
+			"x": 730.0170433963083,
+			"y": 272.3423326818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4279,8 +6771,1409 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 398,
-			"y": 449,
+			"x": 728.5356601252029,
+			"y": -78.62588977866676,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:nHkybd5fQ1SfOAMo347_Y",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 134.453125,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "dashboard"
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "ayBdR",
+			"typeName": "shape"
+		},
+		{
+			"x": 612.5233187539801,
+			"y": 9955.520484685949,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:HPArFpVxAqKwhZoH_VWZU",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 806.046875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "hardBreak"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " (message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "type"
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "==="
+								},
+								{
+									"type": "text",
+									"text": " \"joinGroup\") {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "          "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "!"
+								},
+								{
+									"type": "text",
+									"text": "groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "has(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")) {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "new"
+								},
+								{
+									"type": "text",
+									"text": " Set())"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "italic"
+										}
+									],
+									"text": "to"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "           "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            const client "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": " clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "get(clientId)"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "!"
+								},
+								{
+									"type": "text",
+									"text": "client) "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "return;"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "           "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "!"
+								},
+								{
+									"type": "text",
+									"text": "client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "has(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")) {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "add(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "           "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "get(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "add(req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "get(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "add("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "italic"
+										}
+									],
+									"text": "to"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "italic"
+										}
+									],
+									"text": "to"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "hardBreak"
+								},
+								{
+									"type": "hardBreak"
+								},
+								{
+									"type": "hardBreak"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "return;"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0D0Zx",
+			"typeName": "shape"
+		},
+		{
+			"x": 311.0170433963083,
+			"y": 581.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4316,8 +8209,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1149,
-			"y": 327.796875,
+			"x": 1062.0170433963083,
+			"y": 460.3423326818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4355,8 +8248,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1315.998442708406,
-			"y": 413.54619688762455,
+			"x": 1229.0154861047142,
+			"y": 546.091654569442,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4404,13 +8297,14 @@
 					"x": 0.7148936170212766,
 					"y": 0.017241379310344827
 				},
-				"terminal": "end"
+				"terminal": "end",
+				"snap": "none"
 			},
 			"typeName": "binding"
 		},
 		{
-			"x": 1534.1519592938373,
-			"y": 496.9928972208497,
+			"x": 1447.1690026901456,
+			"y": 629.5383549026672,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4460,8 +8354,8 @@
 			"typeName": "document"
 		},
 		{
-			"x": 426.5243402913901,
-			"y": 1702.4174717856763,
+			"x": 339.5413836876984,
+			"y": 1834.9629294674937,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4497,8 +8391,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 691.3402859282639,
-			"y": -226.6092042401163,
+			"x": 604.3573293245722,
+			"y": -94.06374655829887,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4534,8 +8428,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 305.10127295733645,
-			"y": 265.4988474163724,
+			"x": 218.11831635364473,
+			"y": 398.04430509818985,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4575,11 +8469,7 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:geo": "rectangle",
-				"tldraw:size": "l",
-				"tldraw:color": "grey"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
@@ -4622,8 +8512,8 @@
 			"typeName": "instance"
 		},
 		{
-			"x": 439,
-			"y": 78.796875,
+			"x": 352.0170433963083,
+			"y": 211.34233268181742,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4661,8 +8551,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1059.6978631135005,
-			"y": -167.00441828781265,
+			"x": 972.7149065098088,
+			"y": -34.45896060599523,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -4689,15 +8579,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aSC8C",
 			"typeName": "shape"
 		},
 		{
-			"x": 519.1834569272837,
-			"y": 4597.792016984595,
+			"x": -887.1004256344045,
+			"y": 4816.864307639386,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5541,8 +9433,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1596.551585868604,
-			"y": 548.611607545431,
+			"x": 1509.5686292649123,
+			"y": 681.1570652272484,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5569,15 +9461,17 @@
 				"text": "",
 				"labelPosition": 0.5,
 				"font": "draw",
-				"scale": 1
+				"scale": 1,
+				"kind": "arc",
+				"elbowMidPoint": 0.5
 			},
 			"parentId": "page:page",
 			"index": "aikoK",
 			"typeName": "shape"
 		},
 		{
-			"x": 397,
-			"y": 132.8515625,
+			"x": 310.0170433963083,
+			"y": 265.3970201818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5615,8 +9509,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 679,
-			"y": 314,
+			"x": 592.0170433963083,
+			"y": 446.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5652,8 +9546,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 276.4909757002307,
-			"y": 265.7263277259117,
+			"x": 189.508019096539,
+			"y": 398.2717854077291,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5689,8 +9583,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1872.1065458450946,
-			"y": 371.1493357908114,
+			"x": 1785.123589241403,
+			"y": 503.6947934726288,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5726,8 +9620,1399 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 223,
-			"y": 259,
+			"x": 1043.07743687145,
+			"y": 11234.334857987553,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:LS2K2Z8VT_WYZaAH_9CLx",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 883.515625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " (message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "type"
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "==="
+								},
+								{
+									"type": "text",
+									"text": " \"joinGroup\") {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "          "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "!"
+								},
+								{
+									"type": "text",
+									"text": "groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "has(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")) {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "set(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "[]"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "italic"
+										}
+									],
+									"text": "to"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "           "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            const client "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "="
+								},
+								{
+									"type": "text",
+									"text": " clients"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "get(clientId)"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "!"
+								},
+								{
+									"type": "text",
+									"text": "client) "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "return;"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "           "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "if"
+								},
+								{
+									"type": "text",
+									"text": " ("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "!"
+								},
+								{
+									"type": "text",
+									"text": "client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "inscludes(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")) {"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                client"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "joinedGroups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "push(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "                "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            }"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "           "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "const groupMembers=fetchGroupmembers(message.groupId)"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "         groups.set(  groups.get(message.groupId),[...groupMembers])"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "get(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "push(req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            groups"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "get(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"text": "push("
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "italic"
+										}
+									],
+									"text": "to"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"text": " req"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "user"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "userId"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ";"
+								},
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "await"
+								},
+								{
+									"type": "text",
+									"text": " addgroup(message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "italic"
+										}
+									],
+									"text": "groupId"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": ","
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "message"
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "bold"
+										}
+									],
+									"text": "."
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://message.to",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										},
+										{
+											"type": "italic"
+										}
+									],
+									"text": "to"
+								},
+								{
+									"type": "text",
+									"text": ")"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "hardBreak"
+								},
+								{
+									"type": "hardBreak"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "        "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "            "
+								},
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "bold"
+										}
+									],
+									"text": "return;"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0G3FI",
+			"typeName": "shape"
+		},
+		{
+			"x": 787.4433260595382,
+			"y": 11060.964094488378,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:4t44-FCbKqVbd1nAwZJQH",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1839.671875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "so from dbb i need to fetc h all users that has the group name ,then i need to insert them into group map ..so i need to modify the join group a bit "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0F8OK",
+			"typeName": "shape"
+		},
+		{
+			"x": 136.01704339630828,
+			"y": 391.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5763,8 +11048,59 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1080,
-			"y": 304,
+			"x": 1059.0381585878908,
+			"y": 12312.014115089902,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:1lpYtbdY6B-WNQR89ep9p",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 1979.921875,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "and this part handels the everything related users and group getch then i need to ass another metod to fetch all users associated with group and add then "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "into the group set thorugh itration "
+								}
+							]
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "b0I8WF",
+			"typeName": "shape"
+		},
+		{
+			"x": 993.0170433963083,
+			"y": 436.5454576818174,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5800,8 +11136,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 558.8645424838572,
-			"y": 1733.3184865490969,
+			"x": 471.8815858801655,
+			"y": 1865.8639442309143,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5875,8 +11211,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1581.0738875328861,
-			"y": 535.4649308742264,
+			"x": 1494.0909309291944,
+			"y": 668.0103885560438,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5912,8 +11248,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1370.8348457845254,
-			"y": 512.9763566350937,
+			"x": 1283.8518891808337,
+			"y": 645.5218143169111,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5951,8 +11287,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 464.8420993095103,
-			"y": 458.8458342113755,
+			"x": 377.85914270581856,
+			"y": 591.3912918931929,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -5988,8 +11324,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1430.439631736829,
-			"y": 452.1794749637439,
+			"x": 1343.4566751331372,
+			"y": 584.7249326455614,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -6027,8 +11363,42 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 1935.198055911633,
-			"y": 410.6212247088881,
+			"x": 2128.645370930285,
+			"y": 8418.732257499245,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:hVr0P9-fLPB27ilNqPS93",
+			"type": "line",
+			"props": {
+				"dash": "draw",
+				"size": "l",
+				"color": "black",
+				"spline": "line",
+				"points": {
+					"a1": {
+						"id": "a1",
+						"index": "a1",
+						"x": 0,
+						"y": 0
+					},
+					"a22XI": {
+						"id": "a22XI",
+						"index": "a22XI",
+						"x": -2.3494607621955765,
+						"y": 394.70940804884594
+					}
+				},
+				"scale": 1
+			},
+			"parentId": "page:page",
+			"index": "b0A2qT",
+			"typeName": "shape"
+		},
+		{
+			"x": 1848.2150993079413,
+			"y": 543.1666823907055,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
