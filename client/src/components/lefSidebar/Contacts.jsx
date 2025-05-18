@@ -1,27 +1,35 @@
-function Contacts({contacts}){
 
-    allContacts=contacts.map((c)=>
-        <li key={c.id}>
-            
-           <img 
-             src={c.img}
-           />
-           <p>
-            <b>
-               {c.name}  
-            </b>
-           </p>
+import { useState } from "react";
+import { useEffect } from "react"
+
+function Contacts({allMessages,contacts ,onSelectContact }) {
+    
+    
+
+    const allContacts = contacts.map((c) =>
+        
+        <li key={c.id}  onClick={() => onSelectContact(c)}>
+
+            <img
+                src={c.profile_pic}
+            />
+            <p>
+                <b>
+                    {c.username}
+                </b>
+            </p>
 
         </li>
+        
 
     )
-    return(
+    return (
         <>
-        <ul>{allContacts}</ul>
-        <AddContact/>
+            <ul>{allContacts}</ul>
+            <AddContact />
         </>
-  
-        
-       
+
+
+
     )
 }

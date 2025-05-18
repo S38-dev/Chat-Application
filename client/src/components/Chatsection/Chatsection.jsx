@@ -1,27 +1,28 @@
-function Chatsection(messages, selectedContactGroups,socket) {
-    const Allmessages = messages.filter((message) => {
-        if (message.message_group == selectedContactGroups) {
-            return message
-        }
-        if (message.sender_id == selectedContactGroups || message.receiver_id == selectedContactGroups) {
-            return message
-        }
-    })
-    const messagelist = Allmessages.map((message) => (
-        <li key={message.id}>{message.content}</li>
-    ));
+function Chatsection({ activeChat, allMessages, socket }) {
+  const Allmessages = allMessages.filter((message) =>
+    message.sender_id === activeChat.username || message.receiver_id === activeChat.username
+  );
 
-    return (
-        <chatBody classname="chatbody">
-        <ul>
-            {messagelist}
-        </ul>
-        <Chatinput to={selectedContactGroups} socket={socket}/>
-        </chatBody>
-    );
-      
-    
-    
+  const messagelist = Allmessages.map((message) => {
+    if (message.receiver_id === activeChat.username) {
+      return (
+        <li key={message.id} className="1stPersonMessage">
+          {message.content}
+        </li>
+      );
+    } else {
+      return (
+        <li key={message.id} className="2ndPersonMessage">
+          {message.content}
+        </li>
+      );
+    }
+  });
 
-
+  return (
+    <div className="chatbody">
+      <ul>{messagelist}</ul>
+      <Chatinput to={activeChat.username} socket={socket} />
+    </div>
+  );
 }

@@ -11,6 +11,7 @@ const corsOptions={
 var LocalStrategy = require('passport-local');
 
 const {
+  db,
   fetchAllUsers,
   fetchGroups,
   addMessage,
@@ -82,7 +83,7 @@ app.ws('/ws', (ws, req) => {
       const message = JSON.parse(msg);
 
       // Direct message
-      if (!message.group) {
+      if (!message.group && message.type=="direct") {
         await addMessage(message);
         const sender = req.user.userId;
         const receiver = clients.get(message.to);
@@ -102,8 +103,13 @@ app.ws('/ws', (ws, req) => {
       // Fetch stored messages
       if (message.type === 'fetch') {
         const messages = await getAllMessagesForUser(req.user.userId);
+         const query =`
+      select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
+      users on users.username=contacts.usercontacts where contacts.username=$1 
+    `
+       const { contacts } = await db.query(query, [req.user.userId]);
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', messages })
+          JSON.stringify({ type: 'fetched_messages', messages ,user:req.user.userId,contacts})
         );
         return;
       }
