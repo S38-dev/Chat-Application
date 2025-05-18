@@ -3,9 +3,9 @@ const session = require('express-session');
 const passport = require('passport');
 const expressWs = require('express-ws');
 const path = require('path');
-const cors=require('cors')
-const corsOptions={
-  origin:['http://localhost:3000']
+const cors = require('cors')
+const corsOptions = {
+  origin: ['http://localhost:3000']
 }
 
 var LocalStrategy = require('passport-local');
@@ -22,7 +22,7 @@ const {
 
 const userProfile = require('./routes/userProfile.js');
 const authentication = require('./routes/userVerification.js');
-const contacts=require('./routes/contacts.js')
+const contacts = require('./routes/contacts.js')
 const app = express();
 expressWs(app);
 
@@ -52,27 +52,26 @@ app.use('/authentication', authentication);
 
 // Serve React app
 app.get('/', (req, res) => {
- 
-     res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-  
+
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+
 });
 
-// WebSocket setup
+
 const clients = new Map();
 const groups = new Map();
 
 app.ws('/ws', (ws, req) => {
   console.log('WebSocket connection established');
 
-  // Initialize clients map
   (async () => {
     const allClients = await fetchAllUsers();
-    const userGroups = await fetchGroups(req.user.userId);
+    const userGroups = await fetchGroups(req.user.username);
 
     allClients.forEach(clientId => {
       clients.set(clientId, { ws, joinedGroups: [] });
     });
-    const current = clients.get(req.user.userId);
+    const current = clients.get(req.user.username);
     if (current) {
       current.joinedGroups = userGroups;
     }
@@ -83,7 +82,7 @@ app.ws('/ws', (ws, req) => {
       const message = JSON.parse(msg);
 
       // Direct message
-      if (!message.group && message.type=="direct") {
+      if (!message.group && message.type == "direct") {
         await addMessage(message);
         const sender = req.user.userId;
         const receiver = clients.get(message.to);
@@ -103,14 +102,14 @@ app.ws('/ws', (ws, req) => {
       // Fetch stored messages
       if (message.type === 'fetch') {
         const messages = await getAllMessagesForUser(req.user.username);
-         const query =`
-      select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
-      users on users.username=contacts.usercontacts where contacts.username=$1 
-    `
-       const { contacts } = await db.query(query, [req.user.username]);
-       const groups=await db.query(`select * from gorups usere usename=&1`,[req.user.username])
+        const query = `
+          select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
+          users on users.username=contacts.usercontacts where contacts.username=$1 
+           `
+        const { contacts } = await db.query(query, [req.user.username]);
+        const groups = clients.get(req.user.username).joinedGroups
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', messages ,user:req.user.userId,contacts,groups:groups.rows})
+          JSON.stringify({ type: 'fetched_messages', messages, user: req.user.userId, contacts, groups: groups.rows })
         );
         return;
       }
@@ -135,36 +134,43 @@ app.ws('/ws', (ws, req) => {
 
         return;
       }
-
-      // Broadcast to group members
-      clients.forEach((entry, id) => {
-        if (entry.joinedGroups.includes(message.group)) {
-          const payload = {
-            message,
-            from: req.user.userId,
-            receiver: id,
-            group: message.group
-          };
-          entry.ws.send(JSON.stringify(payload));
+      if (message.type === "group") {
+        try {
+          
+          clients.forEach((entry, id) => {
+            if (entry.joinedGroups.includes(message.group)) {
+              const payload = {
+                message:message.content,
+                from: req.user.username,
+                receiver: id,
+                group: message.group
+              };
+              entry.ws.send(JSON.stringify(payload));
+            }
+          });
+        } catch (err) {
+          console.error('WebSocket message handler error:', err);
         }
+      }
+
+
+      ws.on('close', () => {
+        console.log('WebSocket connection closed', req.user.userId);
+        clients.delete(req.user.userId);
       });
-    } catch (err) {
-      console.error('WebSocket message handler error:', err);
+
+      ws.on('error', err => {
+        console.error('WebSocket error:', err);
+      });
+    }catch(e){
+      console.log("error ",e)
+
     }
   });
+})
 
-  ws.on('close', () => {
-    console.log('WebSocket connection closed', req.user.userId);
-    clients.delete(req.user.userId);
-  });
-
-  ws.on('error', err => {
-    console.error('WebSocket error:', err);
-  });
-});
-
-// Start server
+  // Start server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
-});
+  });

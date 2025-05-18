@@ -65,7 +65,7 @@ async function addProfilepic(fileName, username) {
   }
 }
 
-// Retrieve all messages for a user (sent or received)
+
 async function getAllMessagesForUser(userId) {
   try {
     const query = `
@@ -81,7 +81,7 @@ async function getAllMessagesForUser(userId) {
   }
 }
 
-// Insert a new message
+
 async function addMessage(message) {
   try {
     const query = `
@@ -103,7 +103,7 @@ async function addMessage(message) {
   }
 }
 
-// Fetch all members of a particular group
+
 async function fetchGroupmembers(groupId) {
   try {
     const query = 'SELECT * FROM members WHERE group_id = $1';
@@ -115,19 +115,18 @@ async function fetchGroupmembers(groupId) {
   }
 }
 
-// Fetch all users
 async function fetchAllUsers() {
   try {
-    const query = 'SELECT userId FROM users';
+    const query = 'SELECT username FROM users';
     const res = await db.query(query);
-    return res.rows.map(r => r.userid);
+    return res.rows.map(r => r.username);
   } catch (err) {
     console.error('Error fetching clients:', err);
     throw err;
   }
 }
 
-// Fetch all groups a user is a member of
+
 async function fetchGroups(username) {
   try {
     const query = 'SELECT group_id FROM groups WHERE username = $1';
@@ -139,7 +138,7 @@ async function fetchGroups(username) {
   }
 }
 
-// Add a user to a group (create or update)
+
 async function addGroup(groupId, username) {
   try {
     const checkQuery = 'SELECT * FROM groups WHERE group_id = $1';
