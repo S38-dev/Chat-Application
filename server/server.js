@@ -102,14 +102,15 @@ app.ws('/ws', (ws, req) => {
 
       // Fetch stored messages
       if (message.type === 'fetch') {
-        const messages = await getAllMessagesForUser(req.user.userId);
+        const messages = await getAllMessagesForUser(req.user.username);
          const query =`
       select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
       users on users.username=contacts.usercontacts where contacts.username=$1 
     `
-       const { contacts } = await db.query(query, [req.user.userId]);
+       const { contacts } = await db.query(query, [req.user.username]);
+       const groups=await db.query(`select * from gorups usere usename=&1`,[req.user.username])
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', messages ,user:req.user.userId,contacts})
+          JSON.stringify({ type: 'fetched_messages', messages ,user:req.user.userId,contacts,groups:groups.rows})
         );
         return;
       }

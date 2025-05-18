@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-// Components (make sure these are imported or defined somewhere)
+
 import LeftSidebar from './LeftSidebar';
 import ChatSection from './ChatSection';
 import RightSidebar from './RightSidebar';
@@ -20,8 +20,7 @@ function App() {
   const socket = useRef(null);
   const allMessages = useRef('');
   const contacts = useRef('');
-  const [islogin, setislogin] = useState(false); // this should change based on your auth logic
-
+  const [islogin, setislogin] = useState(false);
   useEffect(() => {
     socket.current = new WebSocket('ws://localhost:3000');
 

@@ -68,7 +68,12 @@ router.post('/register', upload.single('profile_pic'), async (req, res) => {
     if (existing.length) return res.status(409).json({ message: 'User exists' });
 
     const hash = await bcrypt.hash(password, 10);
-    const user = await addUser({ username, password: hash, profile_pic: req.file?.filename });
+   const user = await addUser({
+  username,
+  password: hash,
+  profile_pic: req.file?.filename || "drfault.png"
+});
+
     res.status(201).json({ message: 'Registration successful', user });
   } catch (err) {
     res.status(500).json({ message: 'Registration error', error: err.message });
