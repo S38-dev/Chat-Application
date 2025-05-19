@@ -1,7 +1,7 @@
-function Groups({groups}){
+function Groups({groups,onSelectContact,allMessages,groupMessages}){
 
-    allGroups=groups.map((g)=>
-        <li key={g.id}>
+   const  allGroups=groups.map((g)=>
+        <li key={g.group_id} onClick={(e)=>onSelectContact(g)} >
             
            
            <p>

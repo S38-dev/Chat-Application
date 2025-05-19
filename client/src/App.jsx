@@ -18,9 +18,10 @@ function App() {
   const [count, setCount] = useState(0);
   const [activeChat, setActiveChat] = useState(null);
   const socket = useRef(null);
-  const allMessages = useRef('');
-  const contacts = useRef('');
-  const groups=useRef('')
+  const allMessages = useRef([]);
+  const contacts = useRef([]);
+  const groups=useRef([])
+   const groupMessages=useRef([])
   const [islogin, setislogin] = useState(false);
   useEffect(() => {
     socket.current = new WebSocket('ws://localhost:3000');
@@ -34,9 +35,10 @@ function App() {
       const payload = JSON.parse(event.data);
 
       if (payload.type === 'fetched_messages') {
-        allMessages.current = payload.messages;
+        allMessages.current = payload.directMessages;
         contacts.current = payload.contacts;
         groups.current=payload.current
+        groupMessages.current=payload.groupMessages
         console.log('Messages:', allMessages.current);
         console.log('Contacts:', contacts.current);
       }
@@ -56,12 +58,14 @@ function App() {
                   allMessages={allMessages.current}
                   contacts={contacts.current}
                   groups={groups.current}
+                  groupMessages={groupMessages.current}
                   onSelectContact={(c) => setActiveChat(c)}
                 />
                 <ChatSection
                   activeChat={activeChat}
                   allMessages={allMessages.current}
                   socket={socket.current}
+                   groupMessages={groupMessages.current}
                 />
                 <RightSidebar />
               </div>

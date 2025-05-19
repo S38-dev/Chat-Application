@@ -16,7 +16,7 @@ db.connect()
     process.exit(1);
   });
 
-// Fetch a user by username
+
 async function getUser(username) {
   try {
     const query = 'SELECT * FROM users WHERE userName = $1';
@@ -28,7 +28,7 @@ async function getUser(username) {
   }
 }
 
-// Add a new user
+
 async function addUser(userObj) {
   try {
     const query = `
@@ -48,7 +48,26 @@ async function addUser(userObj) {
   }
 }
 
-// Update a user's profile picture
+async function getGroupMessages(username) {
+  const groupQuery = `
+    SELECT group_id FROM members WHERE username = $1
+  `;
+  const groupsRes = await db.query(groupQuery, [username]);
+  const groupIds = groupsRes.rows.map(r => r.group_id);
+
+  if (groupIds.length === 0) return [];
+
+  const placeholders = groupIds.map((_, i) => `$${i + 1}`).join(',');
+  const messageQuery = `
+    SELECT *
+    FROM messages
+    WHERE group IN (${placeholders})
+    ORDER BY id
+  `;
+  const res = await db.query(messageQuery, groupIds);
+  return res.rows;
+}
+
 async function addProfilepic(fileName, username) {
   try {
     const query = `
@@ -84,6 +103,7 @@ async function getAllMessagesForUser(userId) {
 
 async function addMessage(message) {
   try {
+    
     const query = `
       INSERT INTO messages
         (sender_id, receiver_id, message_group, message)
@@ -91,9 +111,9 @@ async function addMessage(message) {
       RETURNING *
     `;
     const res = await db.query(query, [
-      message.form,
-      message.to,
-      message.group,
+      message.from,
+      message.to ?? null,
+      message.group ?? null,
       message.message,
     ]);
     return res.rows[0];
@@ -102,6 +122,7 @@ async function addMessage(message) {
     throw err;
   }
 }
+
 
 
 async function fetchGroupmembers(groupId) {
@@ -129,7 +150,7 @@ async function fetchAllUsers() {
 
 async function fetchGroups(username) {
   try {
-    const query = 'SELECT group_id FROM groups WHERE username = $1';
+    const query = 'SELECT group_id FROM members WHERE username = $1';
     const res = await db.query(query, [username]);
     return res.rows.map(r => r.group_id);
   } catch (err) {
@@ -178,4 +199,5 @@ module.exports = {
   fetchAllUsers,
   fetchGroups,
   addGroup,
+  getGroupMessages
 };

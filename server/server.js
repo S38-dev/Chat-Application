@@ -17,7 +17,8 @@ const {
   addMessage,
   getAllMessagesForUser,
   addgroup,
-  fetchGroupmembers
+  fetchGroupmembers,
+  getGroupMessages
 } = require('./db.js');
 
 const userProfile = require('./routes/userProfile.js');
@@ -99,17 +100,19 @@ app.ws('/ws', (ws, req) => {
         return;
       }
 
-      // Fetch stored messages
+
       if (message.type === 'fetch') {
-        const messages = await getAllMessagesForUser(req.user.username);
+        const directMessages = await getAllMessagesForUser(req.user.username);
         const query = `
           select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
           users on users.username=contacts.usercontacts where contacts.username=$1 
            `
         const { contacts } = await db.query(query, [req.user.username]);
         const groups = clients.get(req.user.username).joinedGroups
+        const groupMessages = await getGroupMessages()
+
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', messages, user: req.user.userId, contacts, groups: groups.rows })
+          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.userId, contacts, groups: groups.rows, groupMessages })
         );
         return;
       }
@@ -136,16 +139,26 @@ app.ws('/ws', (ws, req) => {
       }
       if (message.type === "group") {
         try {
-          
-          clients.forEach((entry, id) => {
+          const savedMessage = {
+            message: message.content,
+            from: req.user.username,
+            receiver: null,
+            group: message.group
+          };
+
+
+          await addMessage(savedMessage);
+
+          clients.forEach(async (entry, id) => {
             if (entry.joinedGroups.includes(message.group)) {
               const payload = {
-                message:message.content,
+                message: message.content,
                 from: req.user.username,
                 receiver: id,
                 group: message.group
               };
               entry.ws.send(JSON.stringify(payload));
+             
             }
           });
         } catch (err) {
@@ -154,23 +167,24 @@ app.ws('/ws', (ws, req) => {
       }
 
 
-      ws.on('close', () => {
-        console.log('WebSocket connection closed', req.user.userId);
-        clients.delete(req.user.userId);
-      });
-
-      ws.on('error', err => {
-        console.error('WebSocket error:', err);
-      });
-    }catch(e){
-      console.log("error ",e)
+    } catch (e) {
+      console.log("error ", e)
 
     }
   });
+
+  ws.on('close', () => {
+    console.log('WebSocket connection closed', req.user.userId);
+    clients.delete(req.user.userId);
+  });
+
+  ws.on('error', err => {
+    console.error('WebSocket error:', err);
+  });
 })
 
-  // Start server
+// Start server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
-  });
+});
