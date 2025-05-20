@@ -1,8 +1,10 @@
-function AuthForm(){
+import Login from "./Login"
+import RegisterForm from "./RegisterForm"
+export default function AuthForm(){
     return (
         <>
         <Login/>
-        <Registration/>
+        <RegisterForm/>
         
         </>
     )

@@ -1,4 +1,6 @@
-function Groups({groups,onSelectContact,allMessages,groupMessages}){
+import AddGroup from "./AddGroup"
+
+export default function Groups({groups,onSelectContact,allMessages,groupMessages,contacts}){
 
    const  allGroups=groups.map((g)=>
         <li key={g.group_id} onClick={(e)=>onSelectContact(g)} >
@@ -16,7 +18,7 @@ function Groups({groups,onSelectContact,allMessages,groupMessages}){
     return(
         <>
         <ul>{allGroups}</ul>
-        <AddGroup/>
+        <AddGroup contacts={contacts}/>
         </>
   
         

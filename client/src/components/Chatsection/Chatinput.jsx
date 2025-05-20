@@ -1,29 +1,31 @@
-import { json } from "express";
+import { useState } from "react";
 
-function Chatinput({ socket, to }) {
-    const [message, setMessage] = useState("");
-    async function SendMessage(event) {
-        event.preventDefault();
-         if (!message.trim()) return;
-      if(!to.group_id){
-        
-       
+export default function Chatinput({ socket, to }) {
+  const [message, setMessage] = useState("");
 
-        socket.send(JSON.stringify({ message, to, type: "direct" }))
-      }
-      else{
-        socket.send(JSON.stringify({ message, to, type: "group" }))
-      }
+  async function SendMessage(event) {
+    event.preventDefault();
+    if (!message.trim()) return;
 
+    const payload = {
+      message,
+      to,
+      type: to.group_id ? "group" : "direct",
+    };
 
+    socket.send(JSON.stringify(payload));
+    setMessage(""); // clear input
+  }
 
-
-
-    }
-    return (
-        <form action="post" id="chatform" onSubmit={(event) => { SendMessage(event) }}>
-            <input type="text" id="chatbox" onChange={(e) => { setMessage(e.target.value) }} />
-            <input type="submit" id="sendButton" />
-        </form>
-    )
+  return (
+    <form onSubmit={SendMessage}>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        id="chatbox"
+      />
+      <input type="submit" id="sendButton" />
+    </form>
+  );
 }

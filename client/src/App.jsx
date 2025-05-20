@@ -5,9 +5,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 
-import LeftSidebar from './LeftSidebar';
-import ChatSection from './ChatSection';
-import RightSidebar from './RightSidebar';
+import LeftSidebar from './components/leftSidebar/sidebar';
+import ChatSection from './components/Chatsection/ChatSection';
+import RightSidebar from './components/rightSidebar/RightSidebar';
 import AuthForm from './AuthForm';
 
 function AuthCheck({ Login, children }) {
@@ -37,7 +37,7 @@ function App() {
       if (payload.type === 'fetched_messages') {
         allMessages.current = payload.directMessages;
         contacts.current = payload.contacts;
-        groups.current=payload.current
+        groups.current=payload.groups
         groupMessages.current=payload.groupMessages
         console.log('Messages:', allMessages.current);
         console.log('Contacts:', contacts.current);
@@ -47,12 +47,13 @@ function App() {
 
   return (
     <BrowserRouter>
+    
       <Routes>
         <Route path="/login" element={<AuthForm />} />
         <Route
           path="/*"
           element={
-            <AuthCheck Login={islogin}>
+            <AuthCheck Login={islogin} setLogin={setislogin}>
               <div className="body">
                 <LeftSidebar
                   allMessages={allMessages.current}

@@ -1,20 +1,17 @@
 import { useRef } from "react"
+import ProfileImg from "./Profile"
+export default function Rightsidebar(){
+const [img, setImg] = useState("");
 
-function Rightsidebar(){
-   const Img=useRef('')
-   const profileInfo=useRef('')
-   useEffect(() => {
-    axios.get('/api/profile-pic')
-      .then(response => {
-      Img.current = response.data.profilePic;
-       
-      })
-      .catch(err => console.error("Failed to load profile pic", err));
-  }, []);
+useEffect(() => {
+  axios.get('/api/profile-pic')
+    .then(response => setImg(response.data.profilePic))
+    .catch(err => console.error("Failed to load profile pic", err));
+}, []);
     return(
         <>
-        <Profile ProfileImg={Img}/>
-        <profileinfo profileInfo={profileInfo}/>
+        <ProfileImg Img={Img}/>
+        {/* <profileinfo profileInfo={profileInfo}/> */}
 
         </>
 

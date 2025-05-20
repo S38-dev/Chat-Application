@@ -1,4 +1,4 @@
 import { Navigate } from "react-router-dom";
-function Authcheck({islogin,children}){
-   return islogin?children:<Navigate to="/login"/> 
+export default function Authcheck({islogin,children,setLogin}){
+   return islogin?children:<Navigate to="/login" state={{ setLogin }} />
 }

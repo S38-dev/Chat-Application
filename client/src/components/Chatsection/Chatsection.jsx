@@ -1,9 +1,10 @@
 import { useRef } from "react";
-
-function Chatsection({ activeChat, allMessages, socket, groupMessages }) {
+import Chatinput from "./Chatinput"
+export default function Chatsection({ activeChat, allMessages, socket, groupMessages }) {
    const receiver =useRef('')
    const Allmessages=useRef('');
    const messagelist=useRef('')
+   const [messageList,setmessageList]=useState('')
   if (activeChat.group_id) {
 
     Allmessages.current = groupMessages.filter((message) =>
@@ -66,11 +67,12 @@ else{
   });
 }
  receiver.current =activeChat.group_id?activeChat:activeChat.username
+ setmessageList(messageList.current)
   return (
     <div className="chatbody">
       <ul>{messagelist}</ul>
 
-      <Chatinput to={receiver.current} socket={socket} />
+      <Chatinput to={messageList} socket={socket} />
     </div>
   );
 }

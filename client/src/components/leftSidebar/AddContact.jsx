@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function AddContact() {
+export default function AddContact() {
     const [styleDisplay, setStyleDisplay] = useState('none');
     const [username, setUsername] = useState('');
 

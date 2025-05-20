@@ -1,8 +1,9 @@
 
 import { useState } from "react";
 import { useEffect } from "react"
+import AddContact from "./AddContact"
 
-function Contacts({allMessages,contacts ,onSelectContact }) {
+export default  function Contacts({allMessages,contacts ,onSelectContact }) {
     
     
 
