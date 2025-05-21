@@ -16,7 +16,7 @@ import axios from 'axios';
     formData.append('profile_pic', profilePic);
 
     try {
-      const res = await axios.post('/register', formData, {
+      const res = await axios.post('http://localhost:3000/authentication/register', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setMessage(res.data.message);

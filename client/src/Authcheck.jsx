@@ -1,4 +1,6 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import AuthForm from "./AuthForm";
 export default function Authcheck({islogin,children,setLogin}){
-   return islogin?children:<Navigate to="/login" state={{ setLogin }} />
+  
+   return islogin?children: <Navigate to="/login"  />;
 }

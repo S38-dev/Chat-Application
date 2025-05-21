@@ -7,9 +7,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import LeftSidebar from './components/leftSidebar/sidebar';
 import ChatSection from './components/Chatsection/ChatSection';
-import RightSidebar from './components/rightSidebar/RightSidebar';
+import RightSidebar from './components/rightSidebar/Rightsidebar';
 import AuthForm from './AuthForm';
-
+import RegisterForm from './RegisterForm';
 function AuthCheck({ Login, children }) {
   return Login ? children : <Navigate to="/login" />;
 }
@@ -20,8 +20,8 @@ function App() {
   const socket = useRef(null);
   const allMessages = useRef([]);
   const contacts = useRef([]);
-  const groups=useRef([])
-   const groupMessages=useRef([])
+  const groups = useRef([])
+  const groupMessages = useRef([])
   const [islogin, setislogin] = useState(false);
   useEffect(() => {
     socket.current = new WebSocket('ws://localhost:3000');
@@ -37,8 +37,8 @@ function App() {
       if (payload.type === 'fetched_messages') {
         allMessages.current = payload.directMessages;
         contacts.current = payload.contacts;
-        groups.current=payload.groups
-        groupMessages.current=payload.groupMessages
+        groups.current = payload.groups
+        groupMessages.current = payload.groupMessages
         console.log('Messages:', allMessages.current);
         console.log('Contacts:', contacts.current);
       }
@@ -47,9 +47,16 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+
       <Routes>
-        <Route path="/login" element={<AuthForm />} />
+
+        <Route path="/register" element={<RegisterForm />} />
+        <Route
+          path="/login"
+          element={<AuthForm setLogin={setislogin} />}
+        />
+
+
         <Route
           path="/*"
           element={
@@ -66,7 +73,7 @@ function App() {
                   activeChat={activeChat}
                   allMessages={allMessages.current}
                   socket={socket.current}
-                   groupMessages={groupMessages.current}
+                  groupMessages={groupMessages.current}
                 />
                 <RightSidebar />
               </div>

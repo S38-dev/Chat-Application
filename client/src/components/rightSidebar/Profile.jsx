@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ProfileImg({ Img }) {
-    const [profile, setprofile] = useState(Img);
+export default function ProfileImg({ img }) {
+    const [profile, setprofile] = useState(img);
     const [preview, setpreview] = useState("")
     const [displayStyle, setdisplayStyle] = useState("none")
 

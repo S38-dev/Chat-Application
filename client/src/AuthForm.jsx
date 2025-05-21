@@ -1,11 +1,12 @@
 import Login from "./Login"
-import RegisterForm from "./RegisterForm"
-export default function AuthForm(){
+import { Link } from "react-router-dom";
+export default function AuthForm({setLogin}){
     return (
         <>
-        <Login/>
-        <RegisterForm/>
-        
+            <Login setLogin={setLogin}/>
+            <Link to="/register" style={{ color: 'blue' }}>
+                Register
+            </Link>
         </>
     )
 }

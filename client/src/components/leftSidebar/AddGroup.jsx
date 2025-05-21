@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function AddGroup({ contacts }) {
   const [selectedArr, setSelectedArr] = useState([]);
   const [groupName, setGroupName] = useState('');
@@ -29,7 +31,7 @@ export default function AddGroup({ contacts }) {
           </li>
         ))}
       </ul>
-      <form onSubmit={createGroup}>
+      <form onSubmit={createGroup} >
         <input
           type="text"
           id="groupName"
