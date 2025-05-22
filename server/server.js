@@ -28,13 +28,17 @@ const app = express();
 expressWs(app);
 
 // Middleware
-app.use(cors(corsOptions))
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true,               
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   express.static(path.join(__dirname, '../client/dist'))
 );
-
+app.use('/uploads', express.static(path.join(__dirname, '.routes/uploads')));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   session({
     secret: 'keyboard cat',
@@ -127,7 +131,7 @@ app.ws('/ws', (ws, req) => {
           await addgroup(groupId, to);
         }
 
-        const clientEntry = clients.get(req.user.userId);
+        const clientEntry = clients.get(req.user.username);
         if (clientEntry && !clientEntry.joinedGroups.includes(groupId)) {
           clientEntry.joinedGroups.push(groupId);
         }

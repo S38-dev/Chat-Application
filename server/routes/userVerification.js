@@ -9,11 +9,12 @@ const { getUser, addUser } = require('../db.js');
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
 
-// Configure LocalStrategy for Passport
+
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const users = await getUser(username);
+      console.log("getting user at userverification ",users)
       if (!users.length) return done(null, false);
 
       const user = users[0];
@@ -22,8 +23,8 @@ passport.use(
 
       return done(null, {
         id: user.id,
-        username: user.userName,
-        profilePic: user.profile_pic,
+        username: user.username,
+       
       });
     } catch (err) {
       return done(err);
@@ -31,17 +32,17 @@ passport.use(
   })
 );
 
-// Serialize and deserialize user to session
+
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.username);
 });
 
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (username, done) => {
   try {
-    const users = await getUserById(id);
+    const users = await getUser(username);
     if (!users.length) return done(null, false);
     const user = users[0];
-    done(null, { id: user.id, username: user.userName, profilePic: user.profile_pic });
+    done(null, { id: user.id, username: user.username, profilePic: user.profile_pic });
   } catch (err) {
     done(err);
   }
@@ -71,7 +72,7 @@ router.post('/register', upload.single('profile_pic'), async (req, res) => {
    const user = await addUser({
   username,
   password: hash,
-  profile_pic: req.file?.filename || "drfault.png"
+  profile_pic: req.file?.filename || "http://localhost:3000/imgs/default-avatar.jpeg"
 });
 
     res.status(201).json({ message: 'Registration successful', user });

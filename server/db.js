@@ -18,9 +18,11 @@ db.connect()
 
 
 async function getUser(username) {
+  console.log("hitting get user....")
   try {
     const query = 'SELECT * FROM users WHERE userName = $1';
     const res = await db.query(query, [username]);
+    console.log("getting users",res.rows)
     return res.rows;
   } catch (err) {
     console.error('Error fetching user:', err);
