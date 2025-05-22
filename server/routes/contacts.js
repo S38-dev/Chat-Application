@@ -48,7 +48,7 @@ router.post("/addgroup", async (req, res) => {
     );
     const groupId = groupResult.group_Id;
 
-    // 2. Insert members
+    
     const memberInserts = members.map(username => 
       db.query('INSERT INTO members (group_id, username) VALUES ($1, $2)', [groupId, username])
     );
@@ -58,6 +58,31 @@ router.post("/addgroup", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
+  }
+});
+router.post('/addcontact', async (req, res) => {
+  console.log("hitting addcontact ",req.body.username)
+  console.log("adcontqct ",req.user.username)
+  try {
+    const result = await db.query(
+      'SELECT username FROM users WHERE username=$1',
+      [req.body.username]
+    );
+
+
+    if (result.rows.length !== 0) {
+      await db.query(
+        'INSERT INTO contacts(username, usercontacts) VALUES($1, $2)',
+        [req.user.username, req.body.username]
+      );
+
+      return res.status(200).json({ message: 'Contact added!' });
+    } else {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+  } catch (error) {
+    console.error('Error adding contact:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

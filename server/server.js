@@ -54,7 +54,7 @@ app.use(passport.session());
 // Routes
 app.use('/user', userProfile);
 app.use('/authentication', authentication);
-
+app.use('/contacts',contacts)
 // Serve React app
 app.get('/', (req, res) => {
 
