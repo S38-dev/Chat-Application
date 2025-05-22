@@ -4,9 +4,9 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-
+import AddgroupPage from './components/leftSidebar/AddgroupPage';
 import LeftSidebar from './components/leftSidebar/sidebar';
-import ChatSection from './components/Chatsection/ChatSection';
+import ChatSection from './components/Chatsection/Chatsection';
 import RightSidebar from './components/rightSidebar/Rightsidebar';
 import AuthForm from './AuthForm';
 import RegisterForm from './RegisterForm';
@@ -55,13 +55,29 @@ function App() {
           path="/login"
           element={<AuthForm setLogin={setislogin} />}
         />
+        <Route
+          path="/addGroupLink"
+          element={
+            <AuthCheck Login={islogin}>
+              <AddgroupPage />
+            </AuthCheck>
+          }
+        />
+
+
+
 
 
         <Route
           path="/*"
           element={
             <AuthCheck Login={islogin} setLogin={setislogin}>
-              <div className="body">
+              jsx
+              <div className="body" style={{
+                height: '100vh',
+                width: '100vw',
+                overflow: 'hidden'
+              }}>
                 <LeftSidebar
                   allMessages={allMessages.current}
                   contacts={contacts.current}

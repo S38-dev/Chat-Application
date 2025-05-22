@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import './Chatinput.css'
 export default function Chatinput({ socket, to }) {
   const [message, setMessage] = useState("");
 
@@ -14,18 +14,19 @@ export default function Chatinput({ socket, to }) {
     };
 
     socket.send(JSON.stringify(payload));
-    setMessage(""); // clear input
+    setMessage("");
   }
 
   return (
     <form onSubmit={SendMessage}>
       <input
+       className="chat-input"
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         id="chatbox"
       />
-      <input type="submit" id="sendButton" />
+      <input className="send-button" type="submit" id="sendButton" />
     </form>
   );
 }

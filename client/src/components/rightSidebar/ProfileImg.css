@@ -1,0 +1,51 @@
+
+.profile-form {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  
+
+}
+
+.profile-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #3a79de;
+  margin-bottom: 20px;
+
+}
+
+.upload-button {
+  background-color: #0c97e1;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  margin-top: 15px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #006450;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label[for="profileImg"] {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 24px;
+  background-color: #f0f2f5;
+  color: #007a5a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+label[for="profileImg"]:hover {
+  background-color: #e0e0e0;
+}

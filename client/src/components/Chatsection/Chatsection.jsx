@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Chatinput from "./Chatinput";
-
+import "./Chatsection.css"
 export default function ChatSection({ activeChat, allMessages, socket, groupMessages }) {
   const [messageList, setMessageList] = useState([]);
 
@@ -14,7 +14,7 @@ export default function ChatSection({ activeChat, allMessages, socket, groupMess
     renderedMessages = groupMsgs.map((message) => {
       const isSender = message.sender_id === activeChat.username;
       return (
-        <li key={message.id} className={isSender ? "2ndPersonMessage" : "1stPersonMessage"}>
+        <li key={message.id} className={isSender ? "secondPersonMessage" : "firstPersonMessage"}>
           {message.content}
         </li>
       );

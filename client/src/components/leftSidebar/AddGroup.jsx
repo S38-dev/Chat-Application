@@ -1,45 +1,19 @@
-import { useState } from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function AddGroup({ contacts }) {
-  const [selectedArr, setSelectedArr] = useState([]);
-  const [groupName, setGroupName] = useState('');
+export default function AddGroup() {
+ 
+  const navigate = useNavigate();
 
-  const selectedMembers = (c) => {
-    setSelectedArr((prev) => [...prev, c.username]);
-  };
-
-  const createGroup = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('/contacts/addgroup', {
-        groupName: groupName,
-        members: selectedArr,
-      });
-      alert('Group created!');
-    } catch (error) {
-      console.error("Failed to create group", error);
-    }
-  };
+ 
+  function addGroupLink() {
+   
+    navigate('/addGroupLink'); 
+  }
 
   return (
-    <>
-      <ul>
-        {contacts.map((c) => (
-          <li key={c.id} onClick={() => selectedMembers(c)}>
-            <img src={c.profile_pic} alt="" />
-            <p><b>{c.username}</b></p>
-          </li>
-        ))}
-      </ul>
-      <form onSubmit={createGroup} >
-        <input
-          type="text"
-          id="groupName"
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-        />
-        <input type="submit" value="Create Group" id="create_group_button" />
-      </form>
-    </>
+    <div class="add-contact-button" onClick={addGroupLink} id="addgroupButton">
+      AddGroup
+    </div>
   );
 }

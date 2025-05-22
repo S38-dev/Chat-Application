@@ -1,0 +1,38 @@
+/* ChatSection.css */
+.message-list {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-list li {
+  padding: 16px 24px;
+  border-radius: 30px;
+  max-width: 80%;
+  position: relative;
+  word-break: break-word;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.firstPersonMessage {
+  background: #f1f0f0;
+  align-self: flex-start;
+  border-radius: 30px 30px 30px 4px;
+}
+
+.secondPersonMessage {
+  background: #007a5a;
+  color: white;
+  align-self: flex-end;
+  border-radius: 30px 30px 4px 30px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

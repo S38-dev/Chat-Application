@@ -1,36 +1,22 @@
+import AddContact from "./AddContact";
+import "./Contacts.css";
 
-import { useState } from "react";
-import { useEffect } from "react"
-import AddContact from "./AddContact"
+export default function Contacts({ allMessages, contacts, onSelectContact }) {
+  const allContacts = contacts.map((c) => (
+    <li key={c.id} onClick={() => onSelectContact(c)} className="contact-item">
+      <img src={c.profile_pic} alt="Profile" />
+      <p><b>{c.username}</b></p>
+    </li>
+  ));
 
-export default  function Contacts({allMessages,contacts ,onSelectContact }) {
-    
-    
-
-    const allContacts = contacts.map((c) =>
-        
-        <li key={c.id}  onClick={() => onSelectContact(c)}>
-
-            <img
-                src={c.profile_pic}
-            />
-            <p>
-                <b>
-                    {c.username}
-                </b>
-            </p>
-
-        </li>
-        
-
-    )
-    return (
-        <>
-            <ul>{allContacts}</ul>
-            <AddContact />
-        </>
-
-
-
-    )
+  return (
+    <div className="sidebar-section">
+      <div className="list-scroll">
+        <ul className="contact-list">{allContacts}</ul>
+      </div>
+      
+        <AddContact />
+      
+    </div>
+  );
 }

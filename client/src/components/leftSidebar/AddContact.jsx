@@ -1,48 +1,88 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import "./AddContact.css";
 
 export default function AddContact() {
-    const [styleDisplay, setStyleDisplay] = useState('none');
+    const [isFormVisible, setFormVisible] = useState(false);
     const [username, setUsername] = useState('');
+    const formRef = useRef(null);
+    const buttonRef = useRef(null);
 
-    const showForm = () => {
-        setStyleDisplay('block');
+    const toggleForm = () => {
+        setFormVisible(prev => !prev);
     };
 
-    const addContact = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append("newContact", username);
-
-        try {
-            const response = await axios.post("/contact/addcontact", formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            console.log("Contact added!", response.data);
-        } catch (error) {
-            console.error("Error adding contact:", error);
+    const handleClickOutside = (event) => {
+        if (
+            formRef.current &&
+            !formRef.current.contains(event.target) &&
+            !buttonRef.current.contains(event.target)
+        ) {
+            setFormVisible(false);
         }
     };
 
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
+    }, []);
+
+    const addContact = async (e) => {
+        e.preventDefault();
+
+
+        try {
+            const response = await axios.post("http://localhost:3000/contacts/addcontact", { username: username }, { withCredentials: true });
+            console.log("Contact added!", response.data);
+            if (response.status === 200) {
+                alert("🎉 Contact added successfully!");
+                setUsername("");
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    alert(" User not found. Please check the username and try again.");
+                } else if (error.response.status === 401) {
+                    alert(" You are not authorized. Please login again.");
+                } else if (error.response.status === 500) {
+                    alert(" Server error. Please try again later.");
+                } else {
+                    alert(`Unexpected error: ${error.response.data?.error || error.message}`);
+                }
+            } else {
+                alert(` Network or unexpected error: ${error.message}`);
+            }
+            console.error("Error adding contact:", error);
+        }
+    }
+
+
     return (
         <>
-            <div className="AddContact-button" onClick={showForm}>
+            <div
+                className="add-contact-button"
+                ref={buttonRef}
+                onClick={toggleForm}
+            >
                 Add Contacts
             </div>
             <form
-                id="addContactForm"
-                style={{ display: styleDisplay }}
+                className="add-contact-form"
+                ref={formRef}
+                style={{ display: isFormVisible ? 'block' : 'none' }}
                 onSubmit={addContact}
             >
                 <input
+                    className="add-contact-input"
                     type="text"
-                    id="addUsername"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <input type="submit" id="addContact" value="Add" />
+                <input
+                    type="submit"
+                    value="Add"
+                    className="add-contact-submit"
+                />
             </form>
         </>
     );

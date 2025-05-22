@@ -1,0 +1,39 @@
+
+.body {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.leftSidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+}
+
+.chat-section {
+  flex: 1;
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  margin: 16px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.rightSidebar {
+  width: 280px;
+  background: white;
+  border-left: 1px solid #e0e0e0;
+  padding: 20px;
+}
+
+* {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.contact-item, .group-item, .chat-section {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

@@ -1,0 +1,42 @@
+.add-contact-button {
+  background-color: #007a5900;
+  color: rgb(3, 127, 243);
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+ 
+  font-size: 20px;
+  font-weight: 600;
+  display: inline-block;
+  width:100%;
+  text-align: center;
+}
+.add-contact-button:hover{
+  background-color: rgb(3, 127, 243);
+  color:white
+}
+.add-contact-form {
+  display: block;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 16px;
+  background-color: white;
+}
+
+.add-contact-input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  margin-right: 8px;
+  width: 200px;
+}
+
+.add-contact-submit {
+  background-color: #17a4ef;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+}
