@@ -2,14 +2,14 @@
  import Contacts from "./Contacts"
 
  import AddgroupPage from "./AddgroupPage"
- export default function LeftSidebar({allMessages,contacts,onSelectContact ,groups,groupMessages}){
+ export default function LeftSidebar({allMessages,contacts,onSelectContact ,groups,groupMessages,currentUser}){
     
     return(
         <div className="leftSidebar">
 
         {/* <Notification /> */}
         
-        <Contacts allMessages={allMessages} contacts={contacts} onSelectContact={onSelectContact} />
+        <Contacts allMessages={allMessages} contacts={contacts} onSelectContact={onSelectContact} currentUser={currentUser} />
         <Groups onSelectContact={onSelectContact} groups={groups} groupMessages={groupMessages} contacts={contacts}/>
         </div>
     )

@@ -1,4 +1,4 @@
-/* ChatSection.css */
+
 .message-list {
   flex: 1;
   padding: 24px;
@@ -12,11 +12,13 @@
 
 .message-list li {
   padding: 16px 24px;
+  width: 40px;
   border-radius: 30px;
   max-width: 80%;
   position: relative;
   word-break: break-word;
   animation: fadeIn 0.3s ease-in;
+  z-index: 1;
 }
 
 .firstPersonMessage {
