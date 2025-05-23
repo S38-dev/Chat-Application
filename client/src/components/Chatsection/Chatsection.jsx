@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Chatinput from "./Chatinput";
 import "./Chatsection.css"
 
-export default function ChatSection({ activeChat, allMessages, socket, groupMessages, currentUser }) {
+export default function ChatSection({ activeChat, allMessages, socket, groupMessages, currentUser, onSend }) {
   const [localMessages, setLocalMessages] = useState([]);
   try{
  console.log("allmessages",allMessages)
@@ -54,7 +54,7 @@ export default function ChatSection({ activeChat, allMessages, socket, groupMess
           <li>Select a chat to start messaging</li>
         )}
       </ul>
-      {activeChat && <Chatinput socket={socket} to={activeChat} currentUser={currentUser} />}
+      {activeChat && <Chatinput socket={socket} to={activeChat}  onSend={onSend} currentUser={currentUser} />}
     </div>
   );
 }

@@ -16,6 +16,7 @@ function AuthCheck({ Login, children }) {
 
 function App() {
   const [count, setCount] = useState(0);
+  
   const [activeChat, setActiveChat] = useState(null);
   const socket = useRef(null);
   const [allMessages, setAllMessages] = useState([]);
@@ -23,7 +24,7 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [groupMessages, setGroupMessages] = useState([]);
   const [islogin, setislogin] = useState(false);
-  const[currentUser,setcurrentUser]=useState(null);
+  const [currentUser, setcurrentUser] = useState(null);
   useEffect(() => {
     socket.current = new WebSocket('ws://localhost:3000/ws');
 
@@ -43,7 +44,7 @@ function App() {
         setAllMessages(payload.directMessages);
         setContacts(payload.contact);
         setcurrentUser(payload.user)
-        console.log("payload.user",payload.user)
+        console.log("payload.user", payload.user)
 
         setGroups(payload.groups);
         setGroupMessages(payload.groupMessages);
@@ -56,8 +57,22 @@ function App() {
         setGroupMessages(prev => [...prev, payload.message]);
       }
     };
-  }, [islogin]);
-
+  });
+   function sendMessage(row) {
+    
+    setAllMessages(prev => [...prev, row]);
+   
+    // socket.current.send(JSON.stringify({
+    //   type: row.message_group ? "group" : "direct",
+    //   message: row.message,
+    //   to: row.message_group ? null : row.receiver_id,
+    //   group: row.message_group
+    // }));
+  }
+  function addingConections(row){
+   
+    setContacts((prev)=>[...prev, row])
+  }
   return (
     <BrowserRouter>
 
@@ -105,6 +120,7 @@ function App() {
                   socket={socket.current}
                   groupMessages={groupMessages}
                   currentUser={currentUser}
+                  onSend={sendMessage}
                 />
                 <RightSidebar />
               </div>

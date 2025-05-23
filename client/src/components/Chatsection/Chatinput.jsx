@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './Chatinput.css'
-export default function Chatinput({ socket, to }) {
+export default function Chatinput({ socket, to, onSend }) {
   const [message, setMessage] = useState("");
   
   async function SendMessage(event) {
@@ -12,8 +12,9 @@ export default function Chatinput({ socket, to }) {
       to:to.username?to.username:null,
       type: to.group_id ? "group" : "direct",
     };
-
+   
     socket.send(JSON.stringify(payload));
+     onSend(payload); 
     setMessage("");
   }
 

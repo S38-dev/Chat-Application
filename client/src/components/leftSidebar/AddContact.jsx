@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./AddContact.css";
 
-export default function AddContact() {
+export default function AddContact({onAdd}) {
     const [isFormVisible, setFormVisible] = useState(false);
     const [username, setUsername] = useState('');
     const formRef = useRef(null);
@@ -35,7 +35,8 @@ export default function AddContact() {
             const response = await axios.post("http://localhost:3000/contacts/addcontact", { username: username }, { withCredentials: true });
             console.log("Contact added!", response.data);
             if (response.status === 200) {
-                alert("🎉 Contact added successfully!");
+                
+                alert("Contact added successfully!");
                 setUsername("");
             }
         } catch (error) {
