@@ -83,19 +83,21 @@ app.ws('/ws', (ws, req) => {
   })();
 
   ws.on('message', async (msg) => {
+    console.log("message in ws",msg)
     try {
       const message = JSON.parse(msg);
 
       // Direct message
       if (!message.group && message.type == "direct") {
-        await addMessage(message);
-        const sender = req.user.userId;
+        await addMessage(message,req.user.username);
+        const sender = req.user.username;
         const receiver = clients.get(message.to);
         const payload = {
-          message,
+          message:message.message,
           from: sender,
           to: message.to,
-          group: null
+          group: null,
+          timestamp: new Date().toISOString()
         };
 
         if (receiver) {
@@ -106,20 +108,28 @@ app.ws('/ws', (ws, req) => {
 
 
       if (message.type === 'fetch') {
+        console.log("fetch message is hitting...")
+        console.log("username fetch",req.user.username)
         const directMessages = await getAllMessagesForUser(req.user.username);
+        let contact;
         const query = `
-          select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
+          select contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
           users on users.username=contacts.usercontacts where contacts.username=$1 
            `
-        const { contacts } = await db.query(query, [req.user.username]);
+        try{
+         contact = await db.query(query, [req.user.username]);
+        console.log("fetched contacts ",contact )
+        }catch(e){
+          console.log("error while fetching contacts",e)
+        }
         const groups = clients.get(req.user.username).joinedGroups
         const groupMessages = await getGroupMessages()
-
+         console.log("direct-messages",directMessages)
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.userId, contacts, groups: groups.rows, groupMessages })
+          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.username, contact:contact.rows, groups: groups.rows, groupMessages })
         );
         return;
-      }
+      } 
 
       // Join group
       if (message.type === 'joinGroup') {

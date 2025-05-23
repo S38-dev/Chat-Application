@@ -87,14 +87,15 @@ async function addProfilepic(fileName, username) {
 }
 
 
-async function getAllMessagesForUser(userId) {
+async function getAllMessagesForUser(username) {
   try {
     const query = `
       SELECT *
       FROM messages
       WHERE sender_id = $1 OR receiver_id = $1
     `;
-    const res = await db.query(query, [userId]);
+    const res = await db.query(query, [username]);
+    console.log("getsllmessages",res.rows)
     return res.rows;
   } catch (err) {
     console.error('Error fetching messages:', err);
@@ -103,7 +104,7 @@ async function getAllMessagesForUser(userId) {
 }
 
 
-async function addMessage(message) {
+async function addMessage(message,from) {
   try {
     
     const query = `
@@ -113,7 +114,7 @@ async function addMessage(message) {
       RETURNING *
     `;
     const res = await db.query(query, [
-      message.from,
+      from,
       message.to ?? null,
       message.group ?? null,
       message.message,
