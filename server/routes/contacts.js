@@ -4,13 +4,14 @@ const { db } = require('../db.js');
 const router = express.Router();
 
 
-router.get('/contacts', async (req, res) => {
+router.get('/contacts', async (req,res) => {
+  console.log("hitting contacts route ")
   if (!req.isAuthenticated || !req.isAuthenticated()) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
   try {
-    const username = req.user.userId;
+    const username = req.user.username;
     // const query = `
     //   SELECT DISTINCT
     //     CASE
@@ -22,12 +23,12 @@ router.get('/contacts', async (req, res) => {
     //     AND group_id IS NULL;
     // `;
     const query =`
-      select contacts.usercontacts, contacts.id ,users.username,user.profile_pic from contacts inner join 
+      select contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
       users on users.username=contacts.usercontacts where contacts.username=$1 
     `
-    const { rows } = await db.query(query, [username]);
-   
-    return res.json({ contacts:rows });
+    const result= await db.query(query, [username]);
+   console.log("contacts :",result.rows)
+    return res.json({ contacts:result.rows });
   } catch (err) {
     console.error('Error fetching contacts:', err);
     return res.status(500).json({ message: 'Failed to fetch contacts' });
@@ -74,6 +75,10 @@ router.post('/addcontact', async (req, res) => {
       await db.query(
         'INSERT INTO contacts(username, usercontacts) VALUES($1, $2)',
         [req.user.username, req.body.username]
+      );
+      await db.query(
+        'INSERT INTO contacts(username, usercontacts) VALUES($1, $2)',
+        [req.body.username,req.user.username ]
       );
 
       return res.status(200).json({ message: 'Contact added!' });
