@@ -2,14 +2,14 @@ import { useState } from "react";
 import './Chatinput.css'
 export default function Chatinput({ socket, to }) {
   const [message, setMessage] = useState("");
-
+  
   async function SendMessage(event) {
     event.preventDefault();
     if (!message.trim()) return;
 
     const payload = {
       message,
-      to,
+      to:to.username?to.username:null,
       type: to.group_id ? "group" : "direct",
     };
 

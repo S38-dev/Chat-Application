@@ -18,32 +18,42 @@ function App() {
   const [count, setCount] = useState(0);
   const [activeChat, setActiveChat] = useState(null);
   const socket = useRef(null);
-  const allMessages = useRef([]);
-  const contacts = useRef([]);
-  const groups = useRef([])
-  const groupMessages = useRef([])
+  const [allMessages, setAllMessages] = useState([]);
+  const [contacts, setContacts] = useState([]);
+  const [groups, setGroups] = useState([]);
+  const [groupMessages, setGroupMessages] = useState([]);
   const [islogin, setislogin] = useState(false);
   useEffect(() => {
-    socket.current = new WebSocket('ws://localhost:3000');
+    socket.current = new WebSocket('ws://localhost:3000/ws');
 
     socket.current.onopen = function () {
       console.log('Connection open!');
-      socket.current.send(JSON.stringify({ type: 'fetch' }));
+      if (socket.current.readyState === WebSocket.OPEN) {
+        socket.current.send(JSON.stringify({ type: 'fetch' }));
+      } else {
+        console.warn("Socket not ready to send");
+      }
     };
 
     socket.current.onmessage = (event) => {
       const payload = JSON.parse(event.data);
 
       if (payload.type === 'fetched_messages') {
-        allMessages.current = payload.directMessages;
-        contacts.current = payload.contacts;
-        groups.current = payload.groups
-        groupMessages.current = payload.groupMessages
-        console.log('Messages:', allMessages.current);
-        console.log('Contacts:', contacts.current);
+        setAllMessages(payload.directMessages);
+        setContacts(payload.contact);
+
+        setGroups(payload.groups);
+        setGroupMessages(payload.groupMessages);
+
+      }
+      else if (payload.type === 'direct') {
+        setAllMessages(prev => [...prev, payload.message]);
+      }
+      else if (payload.type === 'group') {
+        setGroupMessages(prev => [...prev, payload.message]);
       }
     };
-  }, []);
+  }, [islogin]);
 
   return (
     <BrowserRouter>
@@ -79,17 +89,17 @@ function App() {
                 overflow: 'hidden'
               }}>
                 <LeftSidebar
-                  allMessages={allMessages.current}
-                  contacts={contacts.current}
-                  groups={groups.current}
-                  groupMessages={groupMessages.current}
+                  allMessages={allMessages}
+                  contacts={contacts}
+                  groups={groups}
+                  groupMessages={groupMessages}
                   onSelectContact={(c) => setActiveChat(c)}
                 />
                 <ChatSection
                   activeChat={activeChat}
-                  allMessages={allMessages.current}
+                  allMessages={allMessages}
                   socket={socket.current}
-                  groupMessages={groupMessages.current}
+                  groupMessages={groupMessages}
                 />
                 <RightSidebar />
               </div>

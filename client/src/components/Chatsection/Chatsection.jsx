@@ -19,6 +19,19 @@ export default function ChatSection({ activeChat, allMessages, socket, groupMess
         </li>
       );
     });
+  }else{
+     const directmessages=allMessages.filter((msg)=>
+      msg.from==activeChat.username || msg.to==msg.user && msg.group==null
+      
+    )
+     renderedMessages=directmessages.map((message)=>{
+      const isSender = message.sender_id === activeChat.username;
+       return (
+        <li key={message.id} className={isSender ? "secondPersonMessage" : "firstPersonMessage"}>
+          {message.content}
+        </li>
+        )
+     })
   }
 
   return (
@@ -26,7 +39,7 @@ export default function ChatSection({ activeChat, allMessages, socket, groupMess
       <ul className="message-list">
         {renderedMessages.length > 0 ? renderedMessages : <li>No messages yet.</li>}
       </ul>
-      <Chatinput socket={socket} activeChat={activeChat} />
+      <Chatinput socket={socket} to={activeChat} />
     </div>
   );
 }

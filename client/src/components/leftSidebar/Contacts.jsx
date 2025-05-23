@@ -12,7 +12,7 @@ export default function Contacts({ allMessages, contacts, onSelectContact }) {
   return (
     <div className="sidebar-section">
       <div className="list-scroll">
-        <ul className="contact-list">{allContacts}</ul>
+        <ul className="scrollable-content">{allContacts}</ul>
       </div>
       
         <AddContact />

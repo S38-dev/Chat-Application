@@ -3,6 +3,7 @@
 
  import AddgroupPage from "./AddgroupPage"
  export default function LeftSidebar({allMessages,contacts,onSelectContact ,groups,groupMessages}){
+    
     return(
         <div className="leftSidebar">
 
