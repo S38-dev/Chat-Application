@@ -113,6 +113,7 @@ function App() {
                   groupMessages={groupMessages}
                   currentUser={currentUser}
                   onSelectContact={(c) => setActiveChat(c)}
+                  addingConections={addingConections}
                 />
                 <ChatSection
                   activeChat={activeChat}

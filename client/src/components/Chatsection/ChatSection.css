@@ -12,7 +12,8 @@
 
 .message-list li {
   padding: 16px 24px;
-  width: 40px;
+   min-width: 140px;
+   max-width: 300px;
   border-radius: 30px;
   max-width: 80%;
   position: relative;
@@ -22,7 +23,7 @@
 }
 
 .firstPersonMessage {
-  background: #f1f0f0;
+  background: #41c5e9;
   align-self: flex-start;
   border-radius: 30px 30px 30px 4px;
 }

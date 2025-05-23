@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./AddContact.css";
 
-export default function AddContact({onAdd}) {
+export default function AddContact({addingConections}) {
     const [isFormVisible, setFormVisible] = useState(false);
     const [username, setUsername] = useState('');
     const formRef = useRef(null);
@@ -35,7 +35,14 @@ export default function AddContact({onAdd}) {
             const response = await axios.post("http://localhost:3000/contacts/addcontact", { username: username }, { withCredentials: true });
             console.log("Contact added!", response.data);
             if (response.status === 200) {
-                
+                try{
+                await axios.get("http://localhost:3000/contacts/contacts",{ withCredentials: true }).then((res)=>{
+                   console.log("fetching contacts to send as connections ",res)
+                    addingConections(res)
+                })}
+                catch(e){
+                    console.log("error in fetchigng contacts",e)
+                }
                 alert("Contact added successfully!");
                 setUsername("");
             }
