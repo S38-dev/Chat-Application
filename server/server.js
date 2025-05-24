@@ -99,9 +99,16 @@ app.ws('/ws', (ws, req) => {
           group: null,
           timestamp: new Date().toISOString()
         };
+        console.log("fetching receiver...",receiver)
+        
 
         if (receiver) {
+          try{
+            console.log("message is being sent to ",receiver.to )
           receiver.ws.send(JSON.stringify(payload));
+          }catch(e){
+            console.log("error sending message to receiver",e)
+          }
         }
         return;
       }

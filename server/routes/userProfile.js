@@ -36,11 +36,12 @@ router.get('/api/profile-pic', async (req, res) => {
   }
   try {
     const user = await getUser(req.user.username);
+    console.log("profile pic user",user[0])
     const profilePic = user[0].profile_pic?
         user[0].profile_pic
       // ? `/uploads/${user.profile_pic}`
       : '/imgs/default-avatar.jpg';
-    return res.json({ profilePic });
+    return res.json({ profilePic ,username:user[0].username });
   } catch (err) {
     console.error('Error fetching profile pic:', err);
     return res.status(500).json({ profilePic: '/imgs/default-avatar.jpeg' });
