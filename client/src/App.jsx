@@ -16,7 +16,7 @@ function AuthCheck({ Login, children }) {
 
 function App() {
   const [count, setCount] = useState(0);
-  
+
   const [activeChat, setActiveChat] = useState(null);
   const socket = useRef(null);
   const [allMessages, setAllMessages] = useState([]);
@@ -25,43 +25,64 @@ function App() {
   const [groupMessages, setGroupMessages] = useState([]);
   const [islogin, setislogin] = useState(false);
   const [currentUser, setcurrentUser] = useState(null);
-  useEffect(() => {
-    socket.current = new WebSocket('ws://localhost:3000/ws');
 
-    socket.current.onopen = function () {
+
+
+
+
+  useEffect(() => {
+    if (!islogin) return;
+
+    const ws = new WebSocket('ws://localhost:3000/ws');
+    socket.current = ws;
+
+    ws.onopen = () => {
       console.log('Connection open!');
-      if (socket.current.readyState === WebSocket.OPEN) {
-        socket.current.send(JSON.stringify({ type: 'fetch' }));
-      } else {
-        console.warn("Socket not ready to send");
-      }
+      ws.send(JSON.stringify({ type: 'fetch' }));
+
+
     };
 
-    socket.current.onmessage = (event) => {
+    ws.onmessage = (event) => {
       const payload = JSON.parse(event.data);
 
       if (payload.type === 'fetched_messages') {
         setAllMessages(payload.directMessages);
         setContacts(payload.contact);
-        setcurrentUser(payload.user)
-        console.log("payload.user", payload.user)
-
+        setcurrentUser(payload.user);
         setGroups(payload.groups);
         setGroupMessages(payload.groupMessages);
-
-      }
-      else if (payload.type === 'direct') {
-        setAllMessages(prev => [...prev, payload.message]);
-      }
-      else if (payload.type === 'group') {
+      } else if (payload.type === 'direct') {
+        setAllMessages(prev => [...prev, {
+          message: payload.message.message,
+          sender_id: payload.message.sender_id,
+          receiver_id: payload.message.receiver_id,
+          timestamp: payload.message.timestamp
+        }]);
+      } else if (payload.type === 'group') {
         setGroupMessages(prev => [...prev, payload.message]);
       }
     };
-  },[islogin]);
-   function sendMessage(row) {
-    
+
+    ws.onerror = (err) => console.error("WebSocket error:", err);
+    ws.onclose = () => console.log("WebSocket closed");
+
+    return () => {
+
+      ws.close();
+    };
+  }, [islogin]);
+
+
+
+
+
+
+
+  function sendMessage(row) {
+
     setAllMessages(prev => [...prev, row]);
-   
+
     // socket.current.send(JSON.stringify({
     //   type: row.message_group ? "group" : "direct",
     //   message: row.message,
@@ -69,9 +90,9 @@ function App() {
     //   group: row.message_group
     // }));
   }
-  function addingConections(row){
-   
-    setContacts((prev)=>[...prev, row])
+  function addingConections(row) {
+
+    setContacts((prev) => [...prev, row])
   }
   return (
     <BrowserRouter>

@@ -7,6 +7,7 @@ export default function Chatinput({ socket, to, onSend,currentUser }) {
     event.preventDefault();
     if (!message.trim()) return;
     console.log("receiver id",to.username)
+    console.log("senderid",currentUser)
     const payload = {
       message,
        sender_id: currentUser,  
