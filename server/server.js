@@ -29,8 +29,8 @@ expressWs(app);
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', 
-  credentials: true,               
+  origin: 'http://localhost:5173',
+  credentials: true,
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -54,7 +54,7 @@ app.use(passport.session());
 // Routes
 app.use('/user', userProfile);
 app.use('/authentication', authentication);
-app.use('/contacts',contacts)
+app.use('/contacts', contacts)
 // Serve React app
 app.get('/', (req, res) => {
 
@@ -72,10 +72,9 @@ app.ws('/ws', (ws, req) => {
   (async () => {
     const allClients = await fetchAllUsers();
     const userGroups = await fetchGroups(req.user.username);
-
-    allClients.forEach(clientId => {
-      clients.set(clientId, { ws, joinedGroups: [] });
-    });
+  //   allClients.forEach(clientId => {
+  //   clients.set(clientId, { ws, joinedGroups: [] });
+  // })  
     const current = clients.get(req.user.username);
     if (current) {
       current.joinedGroups = userGroups;
@@ -83,31 +82,33 @@ app.ws('/ws', (ws, req) => {
   })();
 
   ws.on('message', async (msg) => {
-    console.log("message in ws",msg)
+    console.log("message in ws", msg)
     try {
       const message = JSON.parse(msg);
-
+      console.log("message whidh is senidng ", message)
+       clients.set(req.user.username, { ws, joinedGroups: [] });
       // Direct message
       if (!message.group && message.type == "direct") {
-        await addMessage(message,req.user.username);
+        const savedMessage = await addMessage(message, req.user.username);
         const sender = req.user.username;
-        const receiver = clients.get(message.to);
+        const receiver = clients.get(message.receiver_id);
         const payload = {
-          message:message.message,
-          from: sender,
-          to: message.to,
-          group: null,
-          timestamp: new Date().toISOString()
+          type: "direct",
+          message: {
+            message: savedMessage.message,
+            sender_id: savedMessage.sender_id,
+            receiver_id: savedMessage.receiver_id,
+            timestamp: savedMessage.timestamp
+          }
         };
-        console.log("fetching receiver...",receiver)
-        
 
         if (receiver) {
-          try{
-            console.log("message is being sent to ",receiver.to )
-          receiver.ws.send(JSON.stringify(payload));
-          }catch(e){
-            console.log("error sending message to receiver",e)
+          try {
+
+            receiver.ws.send(JSON.stringify(payload));
+            console.log("massage has been sent ")
+          } catch (e) {
+            console.log("error sending message to receiver", e)
           }
         }
         return;
@@ -116,27 +117,27 @@ app.ws('/ws', (ws, req) => {
 
       if (message.type === 'fetch') {
         console.log("fetch message is hitting...")
-        console.log("username fetch",req.user.username)
+        console.log("username fetch", req.user.username)
         const directMessages = await getAllMessagesForUser(req.user.username);
         let contact;
         const query = `
           select contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
           users on users.username=contacts.usercontacts where contacts.username=$1 
            `
-        try{
-         contact = await db.query(query, [req.user.username]);
-        console.log("fetched contacts ",contact )
-        }catch(e){
-          console.log("error while fetching contacts",e)
+        try {
+          contact = await db.query(query, [req.user.username]);
+          console.log("fetched contacts ", contact)
+        } catch (e) {
+          console.log("error while fetching contacts", e)
         }
         const groups = clients.get(req.user.username).joinedGroups
         const groupMessages = await getGroupMessages()
-         console.log("direct-messages",directMessages)
+        console.log("direct-messages", directMessages)
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.username, contact:contact.rows, groups: groups.rows, groupMessages })
+          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.username, contact: contact.rows, groups: groups.rows, groupMessages })
         );
         return;
-      } 
+      }
 
       // Join group
       if (message.type === 'joinGroup') {
@@ -179,7 +180,7 @@ app.ws('/ws', (ws, req) => {
                 group: message.group
               };
               entry.ws.send(JSON.stringify(payload));
-             
+
             }
           });
         } catch (err) {

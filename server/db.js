@@ -106,7 +106,7 @@ async function getAllMessagesForUser(username) {
 
 async function addMessage(message,from) {
   try {
-    
+    console.log("direct message is being added",message)
     const query = `
       INSERT INTO messages
         (sender_id, receiver_id, message_group, message)
@@ -115,8 +115,8 @@ async function addMessage(message,from) {
     `;
     const res = await db.query(query, [
       from,
-      message.to ?? null,
-      message.group ?? null,
+      message.receiver_id ? message.receiver_id :null,
+      message.message_group ?? null,
       message.message,
     ]);
     return res.rows[0];
