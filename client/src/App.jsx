@@ -57,7 +57,7 @@ function App() {
         setGroupMessages(prev => [...prev, payload.message]);
       }
     };
-  });
+  },[islogin]);
    function sendMessage(row) {
     
     setAllMessages(prev => [...prev, row]);
