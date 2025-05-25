@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 
 const clients = new Map();
 const groups = new Map();
-
+app.locals.clients=clients
 app.ws('/ws', (ws, req) => {
   console.log('WebSocket connection established');
 

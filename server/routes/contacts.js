@@ -4,12 +4,13 @@ const { db } = require('../db.js');
 const router = express.Router();
 
 
-router.get('/contacts', async (req,res) => {
+router.get('/contacts', async (req, res) => {
+  const clients=req.app.locals.clients
   console.log("hitting contacts route ")
   if (!req.isAuthenticated || !req.isAuthenticated()) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
-
+ 
   try {
     const username = req.user.username;
     // const query = `
@@ -22,20 +23,22 @@ router.get('/contacts', async (req,res) => {
     //   WHERE (sender_id = $1 OR receiver_id = $1)
     //     AND group_id IS NULL;
     // `;
-    const query =`
-      select contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
-      users on users.username=contacts.usercontacts where contacts.username=$1 
+    const query = `
+      select distinct on(contacts.usercontacts) contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
+      users on users.username=contacts.usercontacts where  contacts.username = $1
+      
     `
-    const result= await db.query(query, [username]);
-   console.log("contacts :",result.rows)
-    return res.json({ contacts:result.rows });
+    const result = await db.query(query, [username]);
+    console.log("contacts :", result.rows)
+    
+   if(result.rows.length!=0) return res.json({ contacts: result.rows });
   } catch (err) {
     console.error('Error fetching contacts:', err);
     return res.status(500).json({ message: 'Failed to fetch contacts' });
   }
 });
 router.post("/addgroup", async (req, res) => {
-  const { groupName, admin, members } = req.body; 
+  const { groupName, admin, members } = req.body;
 
   if (!groupName || !admin || !Array.isArray(members)) {
     return res.status(400).json({ error: "Invalid payload" });
@@ -45,12 +48,12 @@ router.post("/addgroup", async (req, res) => {
 
     const [groupResult] = await db.query(
       'INSERT INTO groups (group_name, username) VALUES ($1, $2)',
-      [groupName,req.user.username]
+      [groupName, req.user.username]
     );
     const groupId = groupResult.group_Id;
 
-    
-    const memberInserts = members.map(username => 
+
+    const memberInserts = members.map(username =>
       db.query('INSERT INTO members (group_id, username) VALUES ($1, $2)', [groupId, username])
     );
     await Promise.all(memberInserts);
@@ -62,8 +65,8 @@ router.post("/addgroup", async (req, res) => {
   }
 });
 router.post('/addcontact', async (req, res) => {
-  console.log("hitting addcontact ",req.body.username)
-  console.log("adcontqct ",req.user.username)
+  console.log("hitting addcontact ", req.body.username)
+  console.log("adcontqct ", req.user.username)
   try {
     const result = await db.query(
       'SELECT username FROM users WHERE username=$1',
@@ -78,7 +81,7 @@ router.post('/addcontact', async (req, res) => {
       );
       await db.query(
         'INSERT INTO contacts(username, usercontacts) VALUES($1, $2)',
-        [req.body.username,req.user.username ]
+        [req.body.username, req.user.username]
       );
 
       return res.status(200).json({ message: 'Contact added!' });
