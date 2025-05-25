@@ -161,8 +161,20 @@ async function fetchGroups(username) {
     throw err;
   }
 }
-
-
+ async function fetchContacts(username){
+  console.log("fetch contact ndfj")
+  try {
+    const query = `
+      select distinct on(contacts.usercontacts) contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
+      users on users.username=contacts.usercontacts where  contacts.username = $1
+    `;
+    const result = await db.query(query, [username]);
+    return result.rows;
+  } catch (err) {
+    console.error('Error fetching contacts:', err);
+    throw err;
+  }
+}
 async function addGroup(groupId, username) {
   try {
     const checkQuery = 'SELECT * FROM groups WHERE group_id = $1';
@@ -202,5 +214,6 @@ module.exports = {
   fetchAllUsers,
   fetchGroups,
   addGroup,
-  getGroupMessages
+  getGroupMessages,
+  fetchContacts
 };
