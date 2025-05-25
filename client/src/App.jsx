@@ -92,7 +92,7 @@ function App() {
   }
   function addingConections(row) {
 
-    setContacts((prev) => [...prev, row])
+    setContacts(row)
   }
   return (
     <BrowserRouter>
@@ -129,12 +129,14 @@ function App() {
               }}>
                 <LeftSidebar
                   allMessages={allMessages}
+                  socket={socket.current}
                   contacts={contacts}
                   groups={groups}
                   groupMessages={groupMessages}
                   currentUser={currentUser}
                   onSelectContact={(c) => setActiveChat(c)}
                   addingConections={addingConections}
+                  Login={islogin}
                 />
                 <ChatSection
                   activeChat={activeChat}

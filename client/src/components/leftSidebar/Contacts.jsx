@@ -1,7 +1,8 @@
 import AddContact from "./AddContact";
 import "./Contacts.css";
 
-export default function Contacts({ allMessages, contacts, onSelectContact, addingConections }) {
+export default function Contacts({ allMessages,socket, contacts, onSelectContact, addingConections ,Login={
+  Login}}) {
   const allContacts = contacts.map((c) => (
     <li key={c.id} onClick={() => onSelectContact(c)} className="contact-item">
       <img src={c.profile_pic} alt="Profile" />
@@ -15,7 +16,7 @@ export default function Contacts({ allMessages, contacts, onSelectContact, addin
         <ul className="scrollable-content">{allContacts}</ul>
       </div>
       
-        <AddContact  addingConections={addingConections}/>
+        <AddContact Login={Login} socket={socket} addingConections={addingConections}/>
       
     </div>
   );
