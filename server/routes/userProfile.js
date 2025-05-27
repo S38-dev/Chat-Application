@@ -18,6 +18,7 @@ router.post(
         return res.status(400).json({ message: 'No file uploaded.' });
       }
       const username = req.user.username;
+      console.log("username,progile",username )
       const updatedUser = await addProfilePic(file.filename, username);
       return res.json({ message: 'Upload successful', user: updatedUser });
     } catch (err) {

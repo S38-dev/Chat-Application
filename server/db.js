@@ -130,8 +130,9 @@ async function addMessage(message,from) {
 
 async function fetchGroupmembers(groupId) {
   try {
-    const query = 'SELECT * FROM members WHERE group_id = $1';
+    const query = 'SELECT members.username,users.profile_pic FROM members inner join users on users.username=members.username WHERE group_id = $1';
     const res = await db.query(query, [groupId]);
+    console.log("fetchgroupmembrs",res.rows)
     return res.rows;
   } catch (err) {
     console.error('Error fetching group members:', err);
@@ -153,9 +154,15 @@ async function fetchAllUsers() {
 
 async function fetchGroups(username) {
   try {
-    const query = 'SELECT group_id FROM members WHERE username = $1';
+    const query = `
+      SELECT g.group_id, g.group_name 
+      FROM members m
+      JOIN groups g ON m.group_id = g.group_id 
+      WHERE m.username = $1
+    `;
     const res = await db.query(query, [username]);
-    return res.rows.map(r => r.group_id);
+    return res.rows;
+    console.log("all fetched groups of an users",res.rows)
   } catch (err) {
     console.error('Error fetching groups:', err);
     throw err;

@@ -131,6 +131,7 @@ app.ws('/ws', (ws, req) => {
           console.log("error while fetching contacts", e)
         }
         const groups = clients.get(req.user.username).joinedGroups
+        console.log("groups in fetch message",groups.rows)
         const groupMessages = await getGroupMessages()
         console.log("direct-messages", directMessages)
         ws.send(
