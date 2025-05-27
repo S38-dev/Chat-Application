@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./AddgroupPage.css"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function AddgroupPage({ contacts }) {
   const [selectedArr, setSelectedArr] = useState([]);
   const [groupName, setGroupName] = useState('');
-
+  const navigate = useNavigate();
   const selectedMembers = (c) => {
     setSelectedArr((prev) => {
       if (prev.includes(c.username)) {
@@ -25,11 +27,12 @@ export default function AddgroupPage({ contacts }) {
       return;
     }
     try {
-      await axios.post('/contacts/addgroup', {
+      await axios.post('http://localhost:3000/contacts/addgroup', {
         groupName: groupName,
         members: selectedArr,
-      });
+      },{ withCredentials: true });
       alert('Group created! 🎉');
+       navigate('/', { replace: true });
     } catch (error) {
       console.error("Failed to create group", error);
     }

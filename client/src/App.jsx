@@ -50,7 +50,7 @@ function App() {
         setAllMessages(payload.directMessages);
         setContacts(payload.contact);
         setcurrentUser(payload.user);
-        setGroups(payload.groups);
+        // setGroups(payload.groups);
         setGroupMessages(payload.groupMessages);
       } else if (payload.type === 'direct') {
         setAllMessages(prev => [...prev, {
@@ -60,6 +60,7 @@ function App() {
           timestamp: payload.message.timestamp
         }]);
       } else if (payload.type === 'group') {
+        
         setGroupMessages(prev => [...prev, payload.message]);
       }
     };
@@ -108,7 +109,7 @@ function App() {
           path="/addGroupLink"
           element={
             <AuthCheck Login={islogin}>
-              <AddgroupPage />
+              <AddgroupPage contacts={contacts}/>
             </AuthCheck>
           }
         />
@@ -137,6 +138,8 @@ function App() {
                   onSelectContact={(c) => setActiveChat(c)}
                   addingConections={addingConections}
                   Login={islogin}
+                  onCreated={(newGroup) => {
+    setGroups((prev) => [...prev, newGroup]);}}
                 />
                 <ChatSection
                   activeChat={activeChat}

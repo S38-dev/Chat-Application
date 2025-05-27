@@ -54,3 +54,7 @@
   border-top: 1px solid #ddd;
   background-color: #fff;
 }
+.group-list {
+  border: 2px solid red;
+  height:20px;
+}
