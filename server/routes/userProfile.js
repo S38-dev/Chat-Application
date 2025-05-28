@@ -42,6 +42,7 @@ router.get('/api/profile-pic', async (req, res) => {
         user[0].profile_pic
       // ? `/uploads/${user.profile_pic}`
       : '/imgs/default-avatar.jpg';
+      console.log("currentuser",user[0].username)
     return res.json({ profilePic ,username:user[0].username });
   } catch (err) {
     console.error('Error fetching profile pic:', err);

@@ -23,7 +23,8 @@ const {
 
 const userProfile = require('./routes/userProfile.js');
 const authentication = require('./routes/userVerification.js');
-const contacts = require('./routes/contacts.js')
+const contacts = require('./routes/contacts.js');
+const { json } = require('stream/consumers');
 const app = express();
 expressWs(app);
 
@@ -65,28 +66,42 @@ app.get('/', (req, res) => {
 
 const clients = new Map();
 const groups = new Map();
-app.locals.clients=clients
+app.locals.clients = clients
 app.ws('/ws', (ws, req) => {
   console.log('WebSocket connection established');
 
+
+  // fetchig details from db 
+   let userGroups;
+
   (async () => {
     const allClients = await fetchAllUsers();
-    const userGroups = await fetchGroups(req.user.username);
-  //   allClients.forEach(clientId => {
-  //   clients.set(clientId, { ws, joinedGroups: [] });
-  // })  
-    const current = clients.get(req.user.username);
-    if (current) {
-      current.joinedGroups = userGroups;
-    }
+     userGroups = await fetchGroups(req.user.username);
+    console.log("usergroups", userGroups)
+
+
+    //   allClients.forEach(clientId => {
+    //   clients.set(clientId, { ws, joinedGroups: [] });
+    // })  
+
+
   })();
+
+
+
 
   ws.on('message', async (msg) => {
     console.log("message in ws", msg)
     try {
       const message = JSON.parse(msg);
       console.log("message whidh is senidng ", message)
-       clients.set(req.user.username, { ws, joinedGroups: [] });
+      clients.set(req.user.username, { ws, joinedGroups: [] });
+
+      const current = clients.get(req.user.username);
+      if (current) {
+        current.joinedGroups = userGroups;
+      }
+
       // Direct message
       if (!message.group && message.type == "direct") {
         const savedMessage = await addMessage(message, req.user.username);
@@ -131,7 +146,7 @@ app.ws('/ws', (ws, req) => {
           console.log("error while fetching contacts", e)
         }
         const groups = clients.get(req.user.username).joinedGroups
-        console.log("groups in fetch message",groups.rows)
+        console.log("groups in fetch message", groups.rows)
         const groupMessages = await getGroupMessages()
         console.log("direct-messages", directMessages)
         ws.send(
@@ -139,6 +154,39 @@ app.ws('/ws', (ws, req) => {
         );
         return;
       }
+
+      //sorry 
+
+      if (message.type == "fetch-group") {
+        console.log("update group message ")
+
+
+        const admin = clients.get(req.user.username)
+        const groups = admin.joinedGroups;
+        console.log("all user groups- ", groups)
+        const allGroupsArray = groups.map((g) => {
+          return {
+            group_name: g.group_name,
+            group_id: g.group_id
+
+          }
+        })
+
+
+        const payload = {
+          type: 'update-group-admin',
+          allgroups: allGroupsArray
+
+        }
+        if (admin?.ws && admin.ws.readyState === 1) {
+          admin.ws.send(JSON.stringify(payload))
+        }
+
+
+      }
+
+    
+
 
       // Join group
       if (message.type === 'joinGroup') {

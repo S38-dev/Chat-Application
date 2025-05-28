@@ -1,5 +1,5 @@
 const express = require('express');
-const { db, fetchContacts,fetchGroupmembers } = require('../db.js');
+const { db, fetchContacts, fetchGroupmembers } = require('../db.js');
 
 const router = express.Router();
 
@@ -41,15 +41,15 @@ const router = express.Router();
 
 
 router.post("/addgroup", async (req, res) => {
-  const { groupName, members } = req.body; 
-   const clients = req.app.locals.clients
-    console.log("hitting add group ")
-   
-      if (!req.isAuthenticated()) {
-        console.log("no user")
+  const { groupName, members } = req.body;
+  const clients = req.app.locals.clients
+  console.log("hitting add group ")
+
+  if (!req.isAuthenticated()) {
+    console.log("no user")
     return res.status(401).json({ message: 'Unauthorized' });
   }
-   console.log("re.username in add group ",req.user.username)
+  console.log("re.username in add group ", req.user.username)
   try {
     // Create group with admin
     const groupRes = await db.query(
@@ -58,42 +58,50 @@ router.post("/addgroup", async (req, res) => {
        RETURNING group_id,group_name`,
       [groupName, req.user.username] // Use authenticated user as admin
     );
-    
+
     const groupId = groupRes.rows[0].group_id;
     const group_name = groupRes.rows[0].group_name;
-   console.log("group id ",groupId)
+    console.log("group id ", groupId)
     // Add members including admin
     const allMembers = [req.user.username, ...members];
-    console.log("allmembers",allMembers)
-    if(allMembers.length>0){
-    const insertPromises = allMembers.map(username => 
-      db.query(
-        `INSERT INTO members (group_id, username) 
-         VALUES ($1, $2)`, 
-        [groupId, username]
-      )
-    );
-      
-    await Promise.all(insertPromises);
-  }
-  const groupMembers= await fetchGroupmembers(groupId)
-  let array=[];
-  const payload={
-    type:'update-group',
-    groupName:group_name,
-    groupId:groupId,
-    // members:array
+    console.log("allmembers", allMembers)
+    if (allMembers.length > 0) {
+      const insertPromises = allMembers.map(username =>
+        db.query(
+          `INSERT INTO members (group_id, username) 
+         VALUES ($1, $2)`,
+          [groupId, username]
+        )
+      );
+
+      await Promise.all(insertPromises);
+    }
+    const groupMembers = await fetchGroupmembers(groupId)
+    let array = [];
+
+    // const payload=
+    groupMembers.forEach((user) => {
+      console.log("each group members ",user)
+      array.push(user);
+      const member1 = clients.get(user.username)
+      if (member1?.ws && member1.ws.readyState === 1) {
+        member1.ws.send(JSON.stringify({
+          type: 'update-group',
+          group:{
+          groupName: group_name,
+          groupId: groupId,
+          // members:array
+          }
 
 
-  }
-  groupMembers.forEach((user)=>{
-    array.push(user);
-    const member1=clients.get(user.username)
-    if (member1?.ws && member1.ws.readyState === 1) {
-        member1.ws.send(JSON.stringify(payload));
+        }));
       }
-  })
-
+    })
+    console.log("members arrray",array)
+    //  const admin =clients.get(req.user.username)
+    //   if (admin?.ws && admin.ws.readyState === 1) {
+    //       admin.ws.send(JSON.stringify(payload));
+    //     } even if i comment out it doesnt work 
     res.status(201).json({ groupId });
   } catch (err) {
     console.error(err);
@@ -116,8 +124,8 @@ router.post("/addgroup", async (req, res) => {
 router.post('/addcontact', async (req, res) => {
   console.log("hitting addcontact ", req.body.username)
   console.log("adcontqct ", req.user.username)
-   const clients = req.app.locals.clients
- 
+  const clients = req.app.locals.clients
+
   try {
     const result = await db.query(
       'SELECT username FROM users WHERE username=$1',
@@ -152,21 +160,21 @@ router.post('/addcontact', async (req, res) => {
 
 
       const payload = {
-        type: "contacts_updated", 
+        type: "contacts_updated",
         contacts: updatedUser1Contacts
       };
       const payload2 = {
-        type: "contacts_updated", 
+        type: "contacts_updated",
         contacts: updatedUser2Contacts
       };
-       const sendIfConnected = (username, payload) => {
-      const client = clients.get(username);
-      if (client?.ws && client.ws.readyState === 1) {
-        client.ws.send(JSON.stringify(payload));
-      }
-    };
-    sendIfConnected(req.user.username, payload);
-    sendIfConnected(req.body.username, payload2);
+      const sendIfConnected = (username, payload) => {
+        const client = clients.get(username);
+        if (client?.ws && client.ws.readyState === 1) {
+          client.ws.send(JSON.stringify(payload));
+        }
+      };
+      sendIfConnected(req.user.username, payload);
+      sendIfConnected(req.body.username, payload2);
 
 
 
