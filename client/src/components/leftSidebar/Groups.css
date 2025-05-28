@@ -1,0 +1,83 @@
+
+.groups-section {
+  display: flex;
+  flex-direction: column;
+  height: 49vh;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.groups-list-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px 10px;
+  max-height: calc(100% - 50px);
+}
+
+.groups-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.group-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  margin-bottom: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border-left: 4px solid #4a90e2;
+}
+
+.group-item:hover {
+  background-color: #f0f7ff;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.group-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.group-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-groups-message {
+  padding: 1.5rem;
+  color: #888;
+  text-align: center;
+  font-style: italic;
+  background-color: #fcfcfc;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+.groups-bottom-action {
+  padding: 12px 10px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}

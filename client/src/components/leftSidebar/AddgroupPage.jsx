@@ -32,7 +32,10 @@ export default function AddgroupPage({ contacts }) {
         members: selectedArr,
       },{ withCredentials: true });
       alert('Group created! 🎉');
-       navigate('/', { replace: true });
+      setTimeout(() => {
+  navigate('/', { replace: true });
+}, 500);
+
     } catch (error) {
       console.error("Failed to create group", error);
     }

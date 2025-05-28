@@ -10,6 +10,7 @@ import ChatSection from './components/Chatsection/Chatsection';
 import RightSidebar from './components/rightSidebar/Rightsidebar';
 import AuthForm from './AuthForm';
 import RegisterForm from './RegisterForm';
+// import { json } from 'express';
 function AuthCheck({ Login, children }) {
   return Login ? children : <Navigate to="/login" />;
 }
@@ -39,7 +40,7 @@ function App() {
     ws.onopen = () => {
       console.log('Connection open!');
       ws.send(JSON.stringify({ type: 'fetch' }));
-
+       ws.send(JSON.stringify({ type: 'fetch-group' }))
 
     };
 
@@ -63,6 +64,12 @@ function App() {
         
         setGroupMessages(prev => [...prev, payload.message]);
       }
+
+
+      else if(payload.type=='update-group-admin'){
+        console.log("allgroups: ",payload.allgroups)
+        setGroups(payload.allgroups)
+      }
     };
 
     ws.onerror = (err) => console.error("WebSocket error:", err);
@@ -73,9 +80,11 @@ function App() {
       ws.close();
     };
   }, [islogin]);
+  
 
-
-
+//  useEffect(()=>{
+     
+//  },[])
 
 
 
@@ -139,7 +148,8 @@ function App() {
                   addingConections={addingConections}
                   Login={islogin}
                   onCreated={(newGroup) => {
-    setGroups((prev) => [...prev, newGroup]);}}
+                    console.log("fuck it all",newGroup)
+                  setGroups((prev) => [...prev, newGroup]);}}
                 />
                 <ChatSection
                   activeChat={activeChat}
