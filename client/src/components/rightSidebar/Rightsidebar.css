@@ -9,3 +9,8 @@
   
   
 }
+
+.logout-button {
+  cursor: pointer;
+  /* Add any other desired styling for the button */
+}

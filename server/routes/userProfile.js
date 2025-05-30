@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
-const { addProfilePic, getUser } = require('../db.js');
+const { addProfilepic, getUser } = require('../db.js');
 
 const router = express.Router();
 
@@ -18,8 +18,7 @@ router.post(
         return res.status(400).json({ message: 'No file uploaded.' });
       }
       const username = req.user.username;
-      console.log("username,progile",username )
-      const updatedUser = await addProfilePic(file.filename, username);
+      const updatedUser = await addProfilepic(file.filename, username);
       return res.json({ message: 'Upload successful', user: updatedUser });
     } catch (err) {
       console.error('Profile upload error:', err);
@@ -27,22 +26,17 @@ router.post(
     }
   }
 );
-
+ 
 
 router.get('/api/profile-pic', async (req, res) => {
-  console.log("hitting /api/profilepic")
-  console.log("req.user:", req.user);
   if (!req.isAuthenticated || !req.isAuthenticated()) {
     return res.status(401).json({ profilePic: '/imgs/default-avatar.jpeg' });
   }
   try {
     const user = await getUser(req.user.username);
-    console.log("profile pic user",user[0])
-    const profilePic = user[0].profile_pic?
-        user[0].profile_pic
-      // ? `/uploads/${user.profile_pic}`
-      : '/imgs/default-avatar.jpg';
-      console.log("currentuser",user[0].username)
+    const profilePic = user[0].profile_pic && !user[0].profile_pic.startsWith('http')
+      ? `/uploads/${user[0].profile_pic}`
+      : '/uploads/default-avatar.jpeg';
     return res.json({ profilePic ,username:user[0].username });
   } catch (err) {
     console.error('Error fetching profile pic:', err);

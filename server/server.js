@@ -1,12 +1,10 @@
+const path = require('path');
+require('dotenv').config({ path: __dirname + '/.env' });
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const expressWs = require('express-ws');
-const path = require('path');
 const cors = require('cors')
-const corsOptions = {
-  origin: ['http://localhost:3000']
-}
 
 var LocalStrategy = require('passport-local');
 
@@ -18,13 +16,13 @@ const {
   getAllMessagesForUser,
   addgroup,
   fetchGroupmembers,
-  getGroupMessages
+  getGroupMessages,
+  addGroupMember
 } = require('./db.js');
 
 const userProfile = require('./routes/userProfile.js');
 const authentication = require('./routes/userVerification.js');
 const contacts = require('./routes/contacts.js');
-const { json } = require('stream/consumers');
 const app = express();
 expressWs(app);
 
@@ -35,17 +33,33 @@ app.use(cors({
 }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+console.log('TEST_VAR from .env:', process.env.TEST_VAR);
+
+app.get('/', (req, res) => {
+  if (req.user) {
+   
+    res.json({ user: req.user });
+  } else {
+    console.log(
+      "user is not authenticated"
+    )
+    
+    res.status(401).json({ user: null, message: 'User not authenticated' });
+  }
+});
+
 app.use(
   express.static(path.join(__dirname, '../client/dist'))
 );
-app.use('/uploads', express.static(path.join(__dirname, '.routes/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
+    saveUninitialized: false,
+    cookie: { secure: false, sameSite: 'Lax' }
   })
 );
 
@@ -56,51 +70,97 @@ app.use(passport.session());
 app.use('/user', userProfile);
 app.use('/authentication', authentication);
 app.use('/contacts', contacts)
+
 // Serve React app
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
+//   console.log("hitting refresh" )
+//   // res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 
-  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
-
-});
+// });
 
 
 const clients = new Map();
-const groups = new Map();
+const groupMembers = new Map(); 
 app.locals.clients = clients
 app.ws('/ws', (ws, req) => {
-  console.log('WebSocket connection established');
+ 
+  if (!req.user || !req.user.username) {
+    ws.close();
+    return;
+  }
 
+  const username = req.user.username;
 
-  // fetchig details from db 
-   let userGroups;
+  // Store client's WebSocket connection
+  clients.set(username, { ws, joinedGroups: [] }); 
 
+  // Fetch initial data for the connected user and populate groupMembers map
   (async () => {
-    const allClients = await fetchAllUsers();
-     userGroups = await fetchGroups(req.user.username);
-    console.log("usergroups", userGroups)
+    try {
+      const userGroupsResult = await fetchGroups(username);
+      const userGroups = Array.isArray(userGroupsResult) ? userGroupsResult : userGroupsResult.rows;
+
+     
+      const clientEntry = clients.get(username);
+      if (clientEntry) {
+        clientEntry.joinedGroups = userGroups;
+
+       
+        if (userGroups && Array.isArray(userGroups)) {
+            userGroups.forEach(group => {
+                if (!groupMembers.has(group.group_id)) {
+                    groupMembers.set(group.group_id, new Set());
+                }
+                groupMembers.get(group.group_id).add(ws);
+            });
+        }
+
+        // Send initial data (messages, contacts, groups)
+         const directMessages = await getAllMessagesForUser(username);
+         let contact;
+         const query = `
+           select contacts.usercontacts, contacts.id, users.username,
+             CASE
+               WHEN users.profile_pic IS NULL OR users.profile_pic LIKE 'http%' OR users.profile_pic = ''
+                 THEN 'default-avatar.jpeg'
+               ELSE users.profile_pic
+             END as profile_pic
+           from contacts
+           inner join users on users.username=contacts.usercontacts
+           where contacts.username=$1
+            `
+         try {
+           contact = await db.query(query, [username]);
+         } catch (e) {
+           console.error("error while fetching contacts", e)
+         }
+
+         const groupsPayload = userGroups && Array.isArray(userGroups) ? userGroups : [];
+
+         ws.send(
+           JSON.stringify({ type: 'fetched_messages', directMessages, user: username, contact: contact.rows, groups: groupsPayload })
+         );
+
+         
+         const groupMessages = await getGroupMessages(username);
+          ws.send(
+            JSON.stringify({ type: 'fetched_group_messages_only', groupMessages })
+          );
 
 
-    //   allClients.forEach(clientId => {
-    //   clients.set(clientId, { ws, joinedGroups: [] });
-    // })  
+      }
 
-
+    } catch (error) {
+      console.error(`Server: Error fetching initial data and populating groupMembers for user ${username}:`, error);
+      
+       ws.close();
+    }
   })();
 
 
-
-
   ws.on('message', async (msg) => {
-    console.log("message in ws", msg)
     try {
       const message = JSON.parse(msg);
-      console.log("message whidh is senidng ", message)
-      clients.set(req.user.username, { ws, joinedGroups: [] });
-
-      const current = clients.get(req.user.username);
-      if (current) {
-        current.joinedGroups = userGroups;
-      }
 
       // Direct message
       if (!message.group && message.type == "direct") {
@@ -121,9 +181,8 @@ app.ws('/ws', (ws, req) => {
           try {
 
             receiver.ws.send(JSON.stringify(payload));
-            console.log("massage has been sent ")
           } catch (e) {
-            console.log("error sending message to receiver", e)
+            console.error("error sending message to receiver", e)
           }
         }
         return;
@@ -131,46 +190,46 @@ app.ws('/ws', (ws, req) => {
 
 
       if (message.type === 'fetch') {
-        console.log("fetch message is hitting...")
-        console.log("username fetch", req.user.username)
         const directMessages = await getAllMessagesForUser(req.user.username);
         let contact;
         const query = `
-          select contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
-          users on users.username=contacts.usercontacts where contacts.username=$1 
+          select contacts.usercontacts, contacts.id, users.username,
+            CASE
+              WHEN users.profile_pic IS NULL OR users.profile_pic LIKE 'http%' OR users.profile_pic = ''
+                THEN 'default-avatar.jpeg'
+              ELSE users.profile_pic
+            END as profile_pic
+          from contacts
+          inner join users on users.username=contacts.usercontacts
+          where contacts.username=$1
            `
         try {
           contact = await db.query(query, [req.user.username]);
-          console.log("fetched contacts ", contact)
         } catch (e) {
-          console.log("error while fetching contacts", e)
+          console.error("error while fetching contacts", e)
         }
-        const groups = clients.get(req.user.username).joinedGroups
-        console.log("groups in fetch message", groups.rows)
-        const groupMessages = await getGroupMessages()
-        console.log("direct-messages", directMessages)
+        // Retrieve groups from the client's entry in the clients map
+        const clientEntry = clients.get(req.user.username);
+        const groupsPayload = (clientEntry && clientEntry.joinedGroups && Array.isArray(clientEntry.joinedGroups)) ? clientEntry.joinedGroups : []; // Ensure it's an array
         ws.send(
-          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.username, contact: contact.rows, groups: groups.rows, groupMessages })
+          JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.username, contact: contact.rows, groups: groupsPayload })
         );
         return;
       }
 
-      //sorry 
-
+      //oops
       if (message.type == "fetch-group") {
-        console.log("update group message ")
 
 
-        const admin = clients.get(req.user.username)
-        const groups = admin.joinedGroups;
-        console.log("all user groups- ", groups)
-        const allGroupsArray = groups.map((g) => {
+       
+        const latestUserGroups = await fetchGroups(req.user.username);
+        const allGroupsArray = latestUserGroups.rows ? latestUserGroups.rows.map((g) => {
           return {
             group_name: g.group_name,
             group_id: g.group_id
 
           }
-        })
+        }) : []; 
 
 
         const payload = {
@@ -178,11 +237,80 @@ app.ws('/ws', (ws, req) => {
           allgroups: allGroupsArray
 
         }
+        const admin = clients.get(req.user.username)
         if (admin?.ws && admin.ws.readyState === 1) {
           admin.ws.send(JSON.stringify(payload))
         }
 
 
+      }
+
+      // Handler for adding a member to a group
+      if (message.type === 'add_group_member') {
+        const { groupId, username } = message;
+
+        if (!groupId || !username) {
+          console.error('Invalid add_group_member message: missing groupId or username');
+          return;
+        }
+
+        try {
+          await addGroupMember(groupId, username);
+
+         
+          if (!groupMembers.has(groupId)) {
+              groupMembers.set(groupId, new Set());
+          }
+
+         
+          const adderUsername = req.user.username;
+          const adderClientEntry = clients.get(adderUsername);
+          if (adderClientEntry?.ws && adderClientEntry.ws.readyState === 1) {
+              groupMembers.get(groupId).add(adderClientEntry.ws);
+          } else {
+              console.error(`Server: Could not find active WebSocket for adder (${adderUsername}). Cannot add to groupMembers map for group ${groupId}.`);
+          }
+
+          // Find the WebSocket connection for the newly added user (User B)
+          const addedClientEntry = clients.get(username);
+
+          if (addedClientEntry?.ws && addedClientEntry.ws.readyState === 1) {
+            // Add the newly added user's WebSocket to the groupMembers map for this group
+            groupMembers.get(groupId).add(addedClientEntry.ws);
+
+            // Fetch the latest groups for the added user and send update
+            const latestUserGroups = await fetchGroups(username);
+            const allGroupsArray = latestUserGroups ? latestUserGroups.map((g) => {
+                return {
+                    group_name: g.group_name,
+                    group_id: g.group_id
+                }
+            }) : [];
+
+            // Send the updated group list to the added user
+            const payload = {
+              type: 'update-group-admin', // Reuse the existing type for updating group lists
+              allgroups: allGroupsArray
+            };
+            addedClientEntry.ws.send(JSON.stringify(payload));
+          } else {
+            console.error(`Server: Could not find active WebSocket connection for user ${username}. Cannot send real-time group update or add to groupMembers for group ${groupId}.`);
+          }
+
+        } catch (error) {
+          console.error('Error handling add_group_member message:', error);
+          // Optionally, send an error message back to the sender
+        }
+        return;
+      }
+
+      // New handler for fetching only group messages
+      if (message.type === 'fetch_group_messages') {
+        const groupMessages = await getGroupMessages(req.user.username);
+        ws.send(
+          JSON.stringify({ type: 'fetched_group_messages_only', groupMessages })
+        );
+        return;
       }
 
     
@@ -192,46 +320,52 @@ app.ws('/ws', (ws, req) => {
       if (message.type === 'joinGroup') {
         const { groupId, to } = message;
 
-        if (!groups.has(groupId)) {
-          groups.set(groupId, []);
-          await addgroup(groupId, req.user.userId);
-          await addgroup(groupId, to);
-        }
-
+        
         const clientEntry = clients.get(req.user.username);
-        if (clientEntry && !clientEntry.joinedGroups.includes(groupId)) {
-          clientEntry.joinedGroups.push(groupId);
+        if (clientEntry) {
+             // Re-fetch groups to update the client's joinedGroups list
+             clientEntry.joinedGroups = await fetchGroups(req.user.username);
         }
 
-        const members = await fetchGroupmembers(groupId);
-        groups.set(groupId, members);
+        // Add client's websocket to the groupMembers map for this specific group
+        if (!groupMembers.has(groupId)) {
+            groupMembers.set(groupId, new Set());
+        }
+        const clientWs = clients.get(req.user.username)?.ws;
+        if (clientWs) {
+            groupMembers.get(groupId).add(clientWs);
+        }
 
         return;
       }
       if (message.type === "group") {
         try {
           const savedMessage = {
-            message: message.content,
-            from: req.user.username,
-            receiver: null,
-            group: message.group
+            message: message.message,
+            message_group: message.message_group 
           };
 
 
-          await addMessage(savedMessage);
+          await addMessage(savedMessage, req.user.username); 
+          const targetGroupMembers = groupMembers.get(message.message_group);
 
-          clients.forEach(async (entry, id) => {
-            if (entry.joinedGroups.includes(message.group)) {
-              const payload = {
-                message: message.content,
-                from: req.user.username,
-                receiver: id,
-                group: message.group
-              };
-              entry.ws.send(JSON.stringify(payload));
-
-            }
-          });
+          if (targetGroupMembers) {
+              targetGroupMembers.forEach(memberWs => {
+                  if (memberWs.readyState === 1) { 
+                      const payload = {
+                          type: "group", 
+                          message: {
+                              message: message.message,
+                              sender_id: req.user.username,
+                              receiver_id: null, 
+                              group: message.message_group,
+                              timestamp: new Date().toISOString()
+                          }
+                      };
+                      memberWs.send(JSON.stringify(payload));
+                  }
+              });
+          }
         } catch (err) {
           console.error('WebSocket message handler error:', err);
         }
@@ -239,14 +373,19 @@ app.ws('/ws', (ws, req) => {
 
 
     } catch (e) {
-      console.log("error ", e)
+      console.error("WebSocket message parsing or handling error:", e)
 
     }
   });
 
   ws.on('close', () => {
-    console.log('WebSocket connection closed', req.user.userId);
-    clients.delete(req.user.userId);
+   
+    clients.delete(req.user.username);
+
+ 
+    groupMembers.forEach(members => {
+        members.delete(ws);
+    });
   });
 
   ws.on('error', err => {
@@ -259,3 +398,5 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+module.exports = app;

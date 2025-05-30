@@ -8,8 +8,8 @@ export default function ProfileImg({ img }) {
 
   useEffect(() => {
     if (img) {
-        console.log("img",img)
-      setpreview(img);
+      console.log("img", img);
+      setpreview(`http://localhost:3000${img}`);
       setdisplayStyle("block");
     }
   }, [img]);
@@ -34,6 +34,12 @@ export default function ProfileImg({ img }) {
     axios.post('http://localhost:3000/user/profile/edit/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
+      },
+      withCredentials: true
+    }).then(res => {
+      if (res.data && res.data.user && res.data.user.profile_pic) {
+        setpreview(`http://localhost:3000/uploads/${res.data.user.profile_pic}`);
+        alert("Profile picture uploaded successfully!");
       }
     });
   }
@@ -41,7 +47,7 @@ export default function ProfileImg({ img }) {
   return (
     <form className="profile-form" id="profile_img" onSubmit={submitProfile}>
       <img
-        src={preview || "/imgs/default-avatar.jpeg"}
+        src={preview || "http://localhost:3000/img/default-avatar.jpeg"}
         id="profile-preview"
         style={{ display: displayStyle, width: "100px" }}
         alt="Profile Preview"

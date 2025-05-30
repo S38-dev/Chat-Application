@@ -1,11 +1,15 @@
 const { Client } = require('pg');
+require('dotenv').config({ path: __dirname + '/.env' });
+console.log(".envrocess",process.env);
+
+console.log('DB_PASSWORD from .env:', process.env.DB_PASSWORD);
 
 // Database client setup
 const db = new Client({
   user: 'postgres',
-  host: 'localhost',
-  database: 'Chat',
-  password: '1234',
+  host:process.env.DB_HOST ,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD ,
   port: 5432,
 });
 
@@ -18,11 +22,9 @@ db.connect()
 
 
 async function getUser(username) {
-  console.log("hitting get user....")
   try {
     const query = 'SELECT * FROM users WHERE userName = $1';
     const res = await db.query(query, [username]);
-    console.log("getting users",res.rows)
     return res.rows;
   } catch (err) {
     console.error('Error fetching user:', err);
@@ -63,7 +65,7 @@ async function getGroupMessages(username) {
   const messageQuery = `
     SELECT *
     FROM messages
-    WHERE group IN (${placeholders})
+    WHERE message_group IN (${placeholders})
     ORDER BY id
   `;
   const res = await db.query(messageQuery, groupIds);
@@ -95,7 +97,6 @@ async function getAllMessagesForUser(username) {
       WHERE sender_id = $1 OR receiver_id = $1
     `;
     const res = await db.query(query, [username]);
-    console.log("getsllmessages",res.rows)
     return res.rows;
   } catch (err) {
     console.error('Error fetching messages:', err);
@@ -106,7 +107,6 @@ async function getAllMessagesForUser(username) {
 
 async function addMessage(message,from) {
   try {
-    console.log("direct message is being added",message)
     const query = `
       INSERT INTO messages
         (sender_id, receiver_id, message_group, message)
@@ -132,7 +132,6 @@ async function fetchGroupmembers(groupId) {
   try {
     const query = 'SELECT members.username,users.profile_pic FROM members inner join users on users.username=members.username WHERE group_id = $1';
     const res = await db.query(query, [groupId]);
-    console.log("fetchgroupmembrs",res.rows)
     return res.rows;
   } catch (err) {
     console.error('Error fetching group members:', err);
@@ -162,18 +161,23 @@ async function fetchGroups(username) {
     `;
     const res = await db.query(query, [username]);
     return res.rows;
-    console.log("all fetched groups of an users",res.rows)
   } catch (err) {
     console.error('Error fetching groups:', err);
     throw err;
   }
 }
  async function fetchContacts(username){
-  console.log("fetch contact ndfj")
   try {
     const query = `
-      select distinct on(contacts.usercontacts) contacts.usercontacts, contacts.id ,users.username,users.profile_pic from contacts inner join 
-      users on users.username=contacts.usercontacts where  contacts.username = $1
+      select distinct on(contacts.usercontacts) contacts.usercontacts, contacts.id, users.username,
+        CASE
+          WHEN users.profile_pic IS NULL OR users.profile_pic LIKE 'http%' OR users.profile_pic = ''
+            THEN 'default-avatar.jpeg'
+          ELSE users.profile_pic
+        END as profile_pic
+      from contacts
+      inner join users on users.username=contacts.usercontacts
+      where contacts.username = $1
     `;
     const result = await db.query(query, [username]);
     return result.rows;
@@ -210,6 +214,20 @@ async function addGroup(groupId, username) {
   }
 }
 
+async function addGroupMember(groupId, username) {
+  try {
+    const query = `
+      INSERT INTO members (group_id, username)
+      VALUES ($1, $2)
+      ON CONFLICT (group_id, username) DO NOTHING;
+    `;
+    await db.query(query, [groupId, username]);
+  } catch (err) {
+    console.error('Error adding group member:', err);
+    throw err;
+  }
+}
+
 module.exports = {
   db,
   getUser,
@@ -222,5 +240,6 @@ module.exports = {
   fetchGroups,
   addGroup,
   getGroupMessages,
-  fetchContacts
+  fetchContacts,
+  addGroupMember
 };

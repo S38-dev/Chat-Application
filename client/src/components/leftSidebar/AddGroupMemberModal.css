@@ -1,0 +1,92 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+}
+
+.contact-list-modal {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+.contact-item-modal {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.contact-item-modal:last-child {
+  border-bottom: none;
+}
+
+.contact-item-modal:hover {
+  background-color: #f0f0f0;
+}
+
+.contact-item-modal.selected {
+  background-color: #e0f7fa; /* Light blue to indicate selection */
+  border-left: 4px solid #007a5a;
+}
+
+.contact-item-modal img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-content button:first-of-type {
+  background-color: #1976d2; /* Blue for Add Member */
+  color: white;
+}
+
+.modal-content button:first-of-type:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.modal-content button:last-of-type {
+  background-color: #cccccc; /* Gray for Cancel */
+  color: #333;
+} 

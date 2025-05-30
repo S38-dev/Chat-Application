@@ -4,30 +4,20 @@ import "./Chatsection.css"
 
 export default function ChatSection({ activeChat, allMessages, socket, groupMessages, currentUser, onSend }) {
   const [localMessages, setLocalMessages] = useState([]);
-  try{
- console.log("allmessages",allMessages)
- console.log("currrentuser",currentUser)
- console.log("activeuser",activeChat.username)
-  }catch(e){
-    console.log(e)
-  }
   useEffect(() => {
       if (activeChat) {
         if(activeChat.username){
-      console.log("all message has a problem")
       const directMsgs = allMessages.filter(msg => 
         (msg.sender_id === currentUser && msg.receiver_id === activeChat.username) ||
         (msg.sender_id === activeChat.username && msg.receiver_id === currentUser)
-      );// i seee the message is a child object i have object structure issues 
+      );
       
-      console.log("Filtered direct messages:", directMsgs);
       setLocalMessages(directMsgs);
        }
     
      else {
-    
       const groupMsgs = groupMessages.filter(
-        msg => msg.message_group === activeChat.group_id
+        msg => String(msg.message_group) === String(activeChat.group_id)
       );
       setLocalMessages(groupMsgs);
     }

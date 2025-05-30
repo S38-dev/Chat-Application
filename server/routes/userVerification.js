@@ -14,7 +14,6 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const users = await getUser(username);
-      console.log("getting user at userverification ",users)
       if (!users.length) return done(null, false);
 
       const user = users[0];
@@ -79,6 +78,18 @@ router.post('/register', upload.single('profile_pic'), async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Registration error', error: err.message });
   }
+});
+
+// Logout route
+router.post('/logout', (req, res) => {
+  req.logout(function(err) {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).json({ message: 'Logout failed', error: err.message });
+    }
+    // Redirect or respond after successful logout
+    res.json({ message: 'Logout successful' });
+  });
 });
 
 module.exports = router;
