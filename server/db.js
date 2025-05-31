@@ -2,7 +2,7 @@ const { Client } = require('pg');
 require('dotenv').config({ path: __dirname + '/.env' });
 console.log(".envrocess",process.env);
 
-console.log('DB_PASSWORD from .env:', process.env.DB_PASSWORD);
+
 
 // Database client setup
 const db = new Client({
