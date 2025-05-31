@@ -86,6 +86,7 @@ createdb -U postgres sChat
 ### 8. Import the Schema
 
 ```bash
+cd../
 psql -U postgres -d sChat -f schema.sql
 ```
 
@@ -98,7 +99,7 @@ Make sure `schema.sql` is present in the root directory or provide the correct p
 Back in the **server terminal**, start the server:
 
 ```bash
-npm run dev
+node server.js
 ```
 
 The server should now be connected to your PostgreSQL database and ready to serve API requests.
