@@ -86,7 +86,7 @@ createdb -U postgres sChat
 ### 8. Import the Schema
 
 ```bash
-cd../
+cd ../
 psql -U postgres -d sChat -f schema.sql
 ```
 
