@@ -1,4 +1,4 @@
-// AddContact.jsx
+
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./AddContact.css";
@@ -9,7 +9,6 @@ export default function AddContact({ addingConections, Login, socket }) {
   const formRef = useRef(null);
   const buttonRef = useRef(null);
 
-  // WebSocket handler
   useEffect(() => {
     if (!socket) return;
 
@@ -29,10 +28,8 @@ export default function AddContact({ addingConections, Login, socket }) {
     return () => socket.removeEventListener('message', handleMessage);
   }, [socket, addingConections]);
 
-  // Form visibility toggle
   const toggleForm = () => setFormVisible(prev => !prev);
 
-  // Click outside handler
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (formRef.current && !formRef.current.contains(event.target) &&
@@ -45,7 +42,6 @@ export default function AddContact({ addingConections, Login, socket }) {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // Add contact handler
   const addContact = async (e) => {
     e.preventDefault();
     try {
@@ -61,7 +57,6 @@ export default function AddContact({ addingConections, Login, socket }) {
         setFormVisible(false);
       }
     } catch (error) {
-      // Error handling remains the same as original
       if (error.response) {
         const { status } = error.response;
         const messages = {
