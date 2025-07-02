@@ -36,7 +36,7 @@ function Login({ setLogin }) {
       console.log("Login success:", response.data);
       if (setLogin) setLogin(true);
       
-      // Redirect to previous location or home
+     
       const from = location.state?.from?.pathname || '/';
       navigate(from, { replace: true });
       
