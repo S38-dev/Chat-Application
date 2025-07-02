@@ -48,17 +48,17 @@ router.post("/addgroup", async (req, res) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
   try {
-    // Create group with admin
+   
     const groupRes = await db.query(
       `INSERT INTO groups (group_name, username) 
        VALUES ($1, $2) 
        RETURNING group_id,group_name`,
-      [groupName, req.user.username] // Use authenticated user as admin
+      [groupName, req.user.username]
     );
 
     const group_id = groupRes.rows[0].group_id;
     const group_name = groupRes.rows[0].group_name;
-    // Add members including admin
+ 
     const allMembers = [req.user.username, ...members];
     if (allMembers.length > 0) {
       const insertPromises = allMembers.map(username =>
@@ -74,7 +74,7 @@ router.post("/addgroup", async (req, res) => {
     const groupMembers = await fetchGroupmembers(group_id)
     let array = [];
 
-    // Send 'group-created' message to all group members
+
     const newGroupPayload = {
         type: 'group-created',
         group: {
