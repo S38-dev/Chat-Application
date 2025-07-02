@@ -71,7 +71,6 @@ app.use('/user', userProfile);
 app.use('/authentication', authentication);
 app.use('/contacts', contacts)
 
-// Serve React app
 // app.get('/', (req, res) => {
 //   console.log("hitting refresh" )
 //   // res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
@@ -91,10 +90,9 @@ app.ws('/ws', (ws, req) => {
 
   const username = req.user.username;
 
-  // Store client's WebSocket connection
   clients.set(username, { ws, joinedGroups: [] }); 
 
-  // Fetch initial data for the connected user and populate groupMembers map
+  
   (async () => {
     try {
       const userGroupsResult = await fetchGroups(username);
@@ -115,7 +113,7 @@ app.ws('/ws', (ws, req) => {
             });
         }
 
-        // Send initial data (messages, contacts, groups)
+
          const directMessages = await getAllMessagesForUser(username);
          let contact;
          const query = `
@@ -208,16 +206,16 @@ app.ws('/ws', (ws, req) => {
         } catch (e) {
           console.error("error while fetching contacts", e)
         }
-        // Retrieve groups from the client's entry in the clients map
+      
         const clientEntry = clients.get(req.user.username);
-        const groupsPayload = (clientEntry && clientEntry.joinedGroups && Array.isArray(clientEntry.joinedGroups)) ? clientEntry.joinedGroups : []; // Ensure it's an array
+        const groupsPayload = (clientEntry && clientEntry.joinedGroups && Array.isArray(clientEntry.joinedGroups)) ? clientEntry.joinedGroups : [];
         ws.send(
           JSON.stringify({ type: 'fetched_messages', directMessages, user: req.user.username, contact: contact.rows, groups: groupsPayload })
         );
         return;
       }
 
-      //oops
+
       if (message.type == "fetch-group") {
 
 
@@ -271,14 +269,14 @@ app.ws('/ws', (ws, req) => {
               console.error(`Server: Could not find active WebSocket for adder (${adderUsername}). Cannot add to groupMembers map for group ${groupId}.`);
           }
 
-          // Find the WebSocket connection for the newly added user (User B)
+          
           const addedClientEntry = clients.get(username);
 
           if (addedClientEntry?.ws && addedClientEntry.ws.readyState === 1) {
-            // Add the newly added user's WebSocket to the groupMembers map for this group
+          
             groupMembers.get(groupId).add(addedClientEntry.ws);
 
-            // Fetch the latest groups for the added user and send update
+            // Fetch 
             const latestUserGroups = await fetchGroups(username);
             const allGroupsArray = latestUserGroups ? latestUserGroups.map((g) => {
                 return {
@@ -287,9 +285,9 @@ app.ws('/ws', (ws, req) => {
                 }
             }) : [];
 
-            // Send the updated group list to the added user
+     
             const payload = {
-              type: 'update-group-admin', // Reuse the existing type for updating group lists
+              type: 'update-group-admin', 
               allgroups: allGroupsArray
             };
             addedClientEntry.ws.send(JSON.stringify(payload));
@@ -299,12 +297,12 @@ app.ws('/ws', (ws, req) => {
 
         } catch (error) {
           console.error('Error handling add_group_member message:', error);
-          // Optionally, send an error message back to the sender
+         
         }
         return;
       }
 
-      // New handler for fetching only group messages
+   
       if (message.type === 'fetch_group_messages') {
         const groupMessages = await getGroupMessages(req.user.username);
         ws.send(
@@ -316,18 +314,18 @@ app.ws('/ws', (ws, req) => {
     
 
 
-      // Join group
+  
       if (message.type === 'joinGroup') {
         const { groupId, to } = message;
 
         
         const clientEntry = clients.get(req.user.username);
         if (clientEntry) {
-             // Re-fetch groups to update the client's joinedGroups list
+         
              clientEntry.joinedGroups = await fetchGroups(req.user.username);
         }
 
-        // Add client's websocket to the groupMembers map for this specific group
+       
         if (!groupMembers.has(groupId)) {
             groupMembers.set(groupId, new Set());
         }
@@ -393,7 +391,7 @@ app.ws('/ws', (ws, req) => {
   });
 })
 
-// Start server
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
