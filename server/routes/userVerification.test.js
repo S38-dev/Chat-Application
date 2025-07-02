@@ -34,7 +34,7 @@ describe('Authentication Routes', () => {
     expect(res.body).toHaveProperty('message', 'User exists');
   });
 
-  // Test for user login
+  
   it('should login an existing user', async () => {
  
      await request(app)
