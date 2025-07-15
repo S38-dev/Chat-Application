@@ -26,7 +26,7 @@ const contacts = require('./routes/contacts.js');
 const app = express();
 expressWs(app);
 
-// Middleware
+
 app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true,
